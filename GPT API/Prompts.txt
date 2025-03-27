@@ -1,7 +1,7 @@
 # TASK 1 — Identity Framing in context of Immigration
 Task: Identify the dominant way Swiss identity is portrayed in the article, specifically in the context of immigration. 
 Analyze this newspaper article and determine how Swiss identity is portrayed, if at all. 
-Choose the most dominant identity framing from the list below and return only the corresponding number. 
+Choose the most dominant identity framing from the list below. Return only the corresponding number (1-4). Do not explain your answer. 
 If there is no reference to Swiss identity, return 4.
 
 1: Civic/Political Swissness.
