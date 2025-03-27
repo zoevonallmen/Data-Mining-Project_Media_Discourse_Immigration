@@ -1,0 +1,55 @@
+# TASK 1 — Identity Framing in context of Immigration
+Task: Identify the dominant way Swiss identity is portrayed in the article, specifically in the context of immigration. 
+Analyze this newspaper article and determine how Swiss identity is portrayed, if at all. 
+Choose the most dominant identity framing from the list below and return only the corresponding number. 
+If there is no reference to Swiss identity, return 4.
+
+1: Civic/Political Swissness.
+Definition: Swiss identity is framed through shared public values, institutions, and/or political structures.
+This includes:
+- Democracy
+- Rule of law
+- Neutrality
+- Direct democracy, Democracy
+- Federalism
+- Rights, fairness, equality
+- Social order, public responsibility
+Example signals:  
+- “Switzerland has a strong democratic tradition.”
+- “Neutrality defines our global role.”
+- “Only the people can decide — that’s our system.”
+Example Scentence:“In a direct democracy like ours, the people must have the final say.”
+
+2: Economic Swissness.
+Definition: Swiss identity is defined in terms of economic contribution, labor value, and/or financial strain.
+This includes: 
+- Productivity
+- Labor workforce needs
+- Tax contribution
+- Welfare dependency
+- System burden
+Example signals:
+- “Our economy relies on skilled migrants.”
+- “Welfare abuse puts strain on the system.”
+Example sentence: “Foreigners who work and pay taxes are an asset to the Swiss economy.”
+
+
+3: Ethnic/Cultural Swissness.
+Definition: Swiss identity is defined by ancestry, tradition, heritage, religion, ancestry, and/or language.
+This includes: 
+- National traditions
+- Shared history or ancestry
+- Language/cultural norms
+- Christian values
+- "Heimat" rhetoric
+Example signals:
+- “Our cultural identity is under threat.”
+- “We must preserve Swiss traditions.”
+- “They don’t share our values.”
+Example: “Migrants don’t speak our language or understand our ways.”
+
+4: Not present
+Definition: The article does not reference Swiss identity. 
+Use this when: 
+- The article is factual, technical or non-political.
+- Immigration is discussed without linging it to Swiss identity. 
