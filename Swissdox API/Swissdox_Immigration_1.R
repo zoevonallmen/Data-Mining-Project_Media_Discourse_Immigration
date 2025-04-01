@@ -20,16 +20,14 @@ query:
     - BLIO
     - WOZ
   dates:
-    - from: 2009-09-01
-      to: 2009-12-31
-    - from: 2014-01-01
-      to: 2014-03-01
-    - from: 2015-08-01
-      to: 2015-12-31
-    - from: 2016-05-01
-      to: 2016-06-30  
-    - from: 2020-08-01
-      to: 2020-10-01  
+    - from: 2000-06-24
+      to: 2000-10-24
+    - from: 2013-11-09
+      to: 2014-03-09
+    - from: 2014-08-30
+      to: 2014-12-30
+    - from: 2020-06-27
+      to: 2020-10-27  
   languages:
     - de
   content:
@@ -41,11 +39,11 @@ query:
               - asyl*
               - flüchtling*
               - Personenfreizügigkeit
-              - Asylgesetz
               - Schweiz EU
-      - NOT: sport
-      - NOT: wetter
-      - NOT: verkehr
+              - überfremdung
+              - integration
+              - integriert
+              - ausländ*
 result:
   format: TSV
   maxResults: 100
@@ -125,7 +123,7 @@ library(R.utils)
 gunzip("dataset.tsv.xz", destname = "dataset.tsv", remove = FALSE)
 
 # Load the data into R
-data <- read.delim("dataset.tsv", sep = "\t", encoding = "UTF-8")
+data <- read.delim("Data/Immigration_Data_Test.tsv", sep = "\t", encoding = "UTF-8")
 
 # Preview the first few rows
 head(data)
