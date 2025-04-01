@@ -43,14 +43,11 @@ query:
               - asyl*
               - flüchtling*
               - Personenfreizügigkeit
-              - Schweiz EU
               - überfremdung
-              - integration
-              - integriert
               - ausländ*
 result:
   format: TSV
-  maxResults: 100
+  maxResults: 500000
   columns:
     - id
     - pubtime
@@ -75,7 +72,7 @@ response <- POST(
   headers,
   body = list(
     query = yaml_query,
-    name = "Immigration Test 2", ##change name next time!!
+    name = "Immigration Unlimited", ##change name next time!!
     comment = "Query comment",
     expirationDate = "2025-12-28"
   ),
@@ -104,10 +101,9 @@ print(status_json)
 #Download of the retrieved dataset----------------------------------------------
 
 
-query_id <- "b063bad1-7c51-4281-ac20-98f4914a588b"
+query_id <- "42d098bb-2fb6-4f57-996b-8009e51e27b6"
+download_url <- "https://swissdox.linguistik.uzh.ch/api/download/42d098bb-2fb6-4f57-996b-8009e51e27b6__2025_04_01T12_47_15.tsv.xz"
 
-
-download_url <- "https://swissdox.linguistik.uzh.ch/api/download/b063bad1-7c51-4281-ac20-98f4914a588b__2025_03_26T14_34_30.tsv.xz"
 
 download_response <- GET(download_url, headers)
 
@@ -124,10 +120,10 @@ if (status_code(download_response) == 200) {
 install.packages("R.utils")
 library(R.utils)
 
-gunzip("dataset.tsv.xz", destname = "dataset.tsv", remove = FALSE)
+gunzip("dataset.tsv.xz", destname = "Immigration_Articles_Unlimited.tsv", remove = FALSE)
 
 # Load the data into R
-data <- read.delim("Data/Immigration_Data_Test.tsv", sep = "\t", encoding = "UTF-8")
+data <- read.delim("Data/Immigration_Articles_Unlimited.tsv", sep = "\t", encoding = "UTF-8")
 
 # Preview the first few rows
 head(data)
