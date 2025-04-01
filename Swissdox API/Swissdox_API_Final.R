@@ -37,14 +37,16 @@ query:
   content:
     AND:
       - OR:
-              - migration
               - einwander*
               - zuwander*
               - asyl*
               - flüchtling*
               - Personenfreizügigkeit
               - überfremdung
-              - ausländ*
+              - migrationspolitik
+              - migrationsabkommen
+              - abschiebung
+              - integrationspolitik
 result:
   format: TSV
   maxResults: 500000
@@ -101,8 +103,8 @@ print(status_json)
 #Download of the retrieved dataset----------------------------------------------
 
 
-query_id <- "42d098bb-2fb6-4f57-996b-8009e51e27b6"
-download_url <- "https://swissdox.linguistik.uzh.ch/api/download/42d098bb-2fb6-4f57-996b-8009e51e27b6__2025_04_01T12_47_15.tsv.xz"
+query_id <- "83a0d4e9-1570-408d-85a2-a5eb57cacca1"
+download_url <- "https://swissdox.linguistik.uzh.ch/api/download/83a0d4e9-1570-408d-85a2-a5eb57cacca1__2025_04_01T13_26_45.tsv.xz"
 
 
 download_response <- GET(download_url, headers)
