@@ -15,8 +15,8 @@ This includes for example:
 Articles about immigration in other countries are not relevant, unless the 
 article explicitly connects them to Swiss politics or society.
 Return only on of the following numbers (no explanation):
-1: Relevant — the article discusses immigration in the Swiss context
-0: Not relevant — immigration is not discussed meaningfully, or only in a foreign/non-Swiss context
+  1: Relevant — the article discusses immigration in the Swiss context
+  0: Not relevant — immigration is not discussed meaningfully, or only in a foreign/non-Swiss context
 
 #Task 2 - Indirect Mention of Immigration
 Detect wether immigration is mentionned briefly or indirectly, and is not the main focus
@@ -24,8 +24,31 @@ of the article.
 For example, immigration may appear in only one sentence or sub-paragraph, as 
 part of a larger discussion on another topic (e.g., economy, housing).
 Return only one of the following numbers (no explanation):
-1: Immigration is mentioned briefly or indirectly, but is not the main topic. 
-0: Either immigation is not mentioned at all, or immigratin is the main topic.
+  1: Immigration is mentioned briefly or indirectly, but is not the main topic. 
+  0: Either immigation is not mentioned at all, or immigratin is the main topic.
+
+#Task 3 - Framing of Immigration
+Determine how immigration is framed in the article. Each frame emphasizes certain aspects of
+immigration. Your task is to identify which of the following frames is used to talk about immigration in the articles, 
+in other words how is immigration discussed in the article. 
+Return only one of the following numbers (no explanation). If multiple frames are present, chose the one that is most apparent, dominant or frequently emphasized in the article. 
+  1: Economic frame. Use this if immigration is discussed in terms of its impact on 
+  the economy. This includes effects on jobs, labor force or competition, welfare, or productivity. 
+  Migrants may be described as workers, taxpayers, economic burdens, or financial contributors.
+  2: Cultural/Identity frame. Use this if immigration is framed as a cultural issue.
+  the article focuses on the threat or impact 
+  of immigration on national culture, values, language, religion, or traditions. 
+  Migrants are portrayed as culturally different or challenging to “Swissness.”
+  3: Security/Control frame. Use this if the article frames immigration as a threat 
+  to public safety, crime, terrorism, or uncontrolled borders. Migrants may be portrayed 
+  as risky or linked to disorder.
+  4: Humanitarian/Victim frame. Use this if the article presents migrants as vulnerable 
+  people needing protection. Often used in refugee coverage or appeals to compassion 
+  and moral obligation.
+  5: Political/Legal frae: Use this if the article focuses on on immigration laws, 
+  EU policy, asylum processes, or referendums. May include debates over sovereignty 
+  or institutional control.
+  0: No framing of immigration was detected in the article.
 
 
 # TASK 1 — Identity Framing in context of Immigration
