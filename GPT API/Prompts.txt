@@ -5,6 +5,20 @@ published around the time of major initiavtives (Volksabstimmungen).
 Your task is to carefully analyze each article and perform the following classification tasks, 
 using the instructions provided for each task.
 
+#Task 1 - Relevance
+Analyze whether this article is relevant for a disourse analysis of immigration in the Swiss context.
+The article is relevant if it discusses immigration as an issue in Switzerland. 
+This includes for example:
+- Immigration to Switzerland
+- Swiss political debates about immigration or asylum
+- Swiss parties (e.g. SVP, SP) or referendums related to migration
+Articles about immigration in other countries are not relevant, unless the 
+article explicitly connects them to Swiss politics or society.
+Return only one of the following:
+1: Relevant — the article discusses immigration in the Swiss context
+2: Not relevant — immigration is not discussed meaningfully, or only in a foreign/non-Swiss context
+
+
 # TASK 1 — Identity Framing in context of Immigration
 Task: Identify the dominant way Swiss identity is portrayed in the article, specifically in the context of immigration. 
 Analyze this newspaper article and determine how Swiss identity is portrayed, if at all. 
