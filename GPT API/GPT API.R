@@ -1,8 +1,7 @@
 library(readr)
 
-prompt_text <- read_file("GPT API/Prompts.txt")
-
-articles <-read_csv("Data/test_articles.csv")
+prompt <- read_file("GPT API/Prompts.txt")
+articles <-read_csv("Data/Final_Articles.csv")
 
 library(httr)
 library(jsonlite)
@@ -35,26 +34,20 @@ classify_article <- function(article_text, prompt_text) {
   return(result$choices$message$content)
 }
 
-test <- classify_article(article_text = articles$content[1], prompt_text = prompt_text)
+test <- classify_article(article_text = articles$content[1], prompt_text = prompt)
 
 test$choices$message$content
 
 
+#Test for 10 articles ----------------------------------------------------------
+classified_results <- vector("list", length = 10)
 
-#Testing------------------------------------------------
-test_articles <- head(articles, 1)
-test_articles$classification <- sapply(test_articles$content, function(content) {
-  tryCatch({
-    classify_article(content, prompt_text)
-  }, error = function(e) {
-    warning(paste("Error classifying article:", e$message))
-    return(NA)
-  })
-})
-View(test_articles)
-write_csv(test_articles, "classified_articles_TEST.csv")
+for (i in 151:160) {
+  article_text <- articles$content[i]  
+  
+  classified_results[[i]] <- classify_article(article_text = article_text, prompt_text = prompt)
+}
 
-#Full analysis--------------------------------------------------
-articles$classification <- sapply(articles$text, classify_article, prompt_text = prompt_text)
-write_csv(articles, "classified_articles_FULL.csv")
+classified_results <- unlist(classified_results)
+
 
