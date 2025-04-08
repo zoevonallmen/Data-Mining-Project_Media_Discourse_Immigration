@@ -5,6 +5,8 @@ published around the time of major initiavtives (Volksabstimmungen).
 Your task is to carefully analyze each article and perform the following classification tasks, 
 using the instructions provided for each task.
 
+---
+
 #Task 1 - Relevance
 Analyze whether this article is relevant for a disourse analysis of immigration in the Swiss context.
 The article is relevant if it discusses immigration as an issue in Switzerland. 
@@ -16,7 +18,9 @@ Articles about immigration in other countries are not relevant, unless the
 article explicitly connects them to Swiss politics or society.
 Return only on of the following numbers (no explanation):
   1: Relevant — the article discusses immigration in the Swiss context
-  0: Not relevant — immigration is not discussed meaningfully, or only in a foreign/non-Swiss context
+  0: Not relevant — immigration is not discussed meaningfully, or only in a foreign/non-Swiss context / not applicable. 
+  
+---
 
 #Task 2 - Indirect Mention of Immigration
 Detect wether immigration is mentionned briefly or indirectly, and is not the main focus
@@ -25,84 +29,50 @@ For example, immigration may appear in only one sentence or sub-paragraph, as
 part of a larger discussion on another topic (e.g., economy, housing).
 Return only one of the following numbers (no explanation):
   1: Immigration is mentioned briefly or indirectly, but is not the main topic. 
-  0: Either immigation is not mentioned at all, or immigratin is the main topic.
+  0: Either immigation is not mentioned at all, or immigratin is the main topic / not applicable. 
+
+---
 
 #Task 3 - Framing of Immigration
 Determine how immigration is framed in the article. Each frame emphasizes certain aspects of
 immigration. Your task is to identify which of the following frames is used to talk about immigration in the articles, 
-in other words how is immigration discussed in the article. 
-Return only one of the following numbers (no explanation). If multiple frames are present, chose the one that is most apparent, dominant or frequently emphasized in the article. 
-  1: Economic frame. Use this if immigration is discussed in terms of its impact on 
-  the economy. This includes effects on jobs, labor force or competition, welfare, or productivity. 
+in other words how is immigration discussed in the article, based on the provided categories.
+Return only one of the following numbers (no explanation). If multiple frames are present, chose the one that is most apparent, dominant or frequently emphasized in the article.
+#List of categories:
+  1: Economic frame. 
+  Use this if immigration is discussed in terms of its impact on the economy. 
+  This includes effects on jobs, labor force or competition, welfare, or productivity. 
   Migrants may be described as workers, taxpayers, economic burdens, or financial contributors.
-  2: Cultural/Identity frame. Use this if immigration is framed as a cultural issue.
-  the article focuses on the threat or impact 
-  of immigration on national culture, values, language, religion, or traditions. 
-  Migrants are portrayed as culturally different or challenging to “Swissness.”
-  3: Security/Control frame. Use this if the article frames immigration as a threat 
-  to public safety, crime, terrorism, or uncontrolled borders. Migrants may be portrayed 
-  as risky or linked to disorder.
-  4: Humanitarian/Victim frame. Use this if the article presents migrants as vulnerable 
-  people needing protection. Often used in refugee coverage or appeals to compassion 
-  and moral obligation.
-  5: Political/Legal frae: Use this if the article focuses on on immigration laws, 
-  EU policy, asylum processes, or referendums. May include debates over sovereignty 
-  or institutional control.
-  0: No framing of immigration was detected in the article.
+  2: Cultural/Identity frame. 
+  Use this if immigration is framed as a cultural issue.
+  The article focuses on immigration's effect on Swiss identity, values, language, religion or traditions. 
+  Migrants may be portrayed as culturally different or challenging to Swiss identity.
+  3: Security/Control frame. 
+  Use this if the article frames immigration as a threat to public safety or order.
+  This includes mention of crime, terrorism, instability, or uncontrolled borders. 
+  Migrants may be associated with risk and insecurity.  
+  4: Humanitarian/Victim frame. 
+  Use this if the article presents migrants as people in need of help or protection.
+  This frame emphasized suffering, vulnerability, or moral responsibility.
+  5: Political/Legal frame.
+  Use this if the article focuses on on immigration as a legal or political issue.
+  This includes laws, referendums, asylum procedures, or EU policy.
+  Debates about sovereignty, institutions, or party positions also fall under this frame.
+  0: No framing of immigration was detected in the article / not applicable. 
 
+--
 
-# TASK 1 — Identity Framing in context of Immigration
-Task: Identify the dominant way Swiss identity is portrayed in the article, specifically in the context of immigration. 
-Analyze this newspaper article and determine how Swiss identity is portrayed, if at all. 
-Choose the most dominant identity framing from the list below. Return only the corresponding number (1-4). Do not explain your answer. 
-If there is no reference to Swiss identity, return 4.
-
-1: Civic/Political Swissness.
-Definition: Swiss identity is framed through shared public values, institutions, and/or political structures.
-This includes:
-- Democracy
-- Rule of law
-- Neutrality
-- Direct democracy, Democracy
-- Federalism
-- Rights, fairness, equality
-- Social order, public responsibility
-Example signals:  
-- “Switzerland has a strong democratic tradition.”
-- “Neutrality defines our global role.”
-- “Only the people can decide — that’s our system.”
-Example Scentence:“In a direct democracy like ours, the people must have the final say.”
-
-2: Economic Swissness.
-Definition: Swiss identity is defined in terms of economic contribution, labor value, and/or financial strain.
-This includes: 
-- Productivity
-- Labor workforce needs
-- Tax contribution
-- Welfare dependency
-- System burden
-Example signals:
-- “Our economy relies on skilled migrants.”
-- “Welfare abuse puts strain on the system.”
-Example sentence: “Foreigners who work and pay taxes are an asset to the Swiss economy.”
-
-
-3: Ethnic/Cultural Swissness.
-Definition: Swiss identity is defined by ancestry, tradition, heritage, religion, ancestry, and/or language.
-This includes: 
-- National traditions
-- Shared history or ancestry
-- Language/cultural norms
-- Christian values
-- "Heimat" rhetoric
-Example signals:
-- “Our cultural identity is under threat.”
-- “We must preserve Swiss traditions.”
-- “They don’t share our values.”
-Example: “Migrants don’t speak our language or understand our ways.”
-
-4: Not present
-Definition: The article does not reference Swiss identity. 
-Use this when: 
-- The article is factual, technical or non-political.
-- Immigration is discussed without linging it to Swiss identity. 
+#Task 4 - Sentiment Toward Immigration
+Assess the emotional tone used when immigration or migrants are discussed in the article.
+Choose the sentiment that best reflects how immigration is talked about, based on the provided categories below.
+Return only one of the following numbers (no explanation). If multiple sentiments are present, select the dominant or most consistent one. 
+#List of categories:
+  1: Hopeful. This includes immigration being seen as an opportunity, benefit, or positive force for society.  
+  2: Sympathetic. This includes compassion for migrants or refugees, or emphasizes suffering, vulnerability, or moral duty in the context of immigration.   
+  3: Neutral. Use this if the tone is strictly factual, descriptive, or statistical, without clear emotional framing. 
+  4: Concerned / Uncertain. This includes expression of expresses unease, ambiguity, or worry, but not in a strongly emotional or accusatory way.   
+  5: Fearful. This includes portraying immigration as dangerous, destabilizing, or threatening to public order, values, or safety.  
+  6: Angry. This includes blame, outrage, or emotionally charged criticism — often targeting migrants, elites, or institutions.    
+  7: Dismissive / Downplaying. This includes portraying immigration as exaggerated, unimportant, or overblown.  
+  0: No emotional sentiment related to immigration / not applicable. 
+#Example sentence and categorization: "Mass immigration could overwhelm our system." -> 5
