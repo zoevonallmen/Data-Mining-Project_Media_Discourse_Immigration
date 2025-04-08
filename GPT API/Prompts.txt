@@ -76,3 +76,17 @@ Return only one of the following numbers (no explanation). If multiple sentiment
   7: Dismissive / Downplaying. This includes portraying immigration as exaggerated, unimportant, or overblown.  
   0: No emotional sentiment related to immigration / not applicable. 
 #Example sentence and categorization: "Mass immigration could overwhelm our system." -> 5
+
+---
+
+#Task 5 - Constructed Oppositions
+Identify whether the article constructs an opposition between "the Swiss" and migrants/foreigners.
+This includes explicit contrasts and implicit ones. 
+Oppositions define who belongs and who does not by attributing contrasting characteristics to in-groups and out-groups.
+This includes ascribing positive traits to "the Swiss", ascribing different or negative traits to immigrants/foreigners or using comparative languages, stereotypes or generalizations.
+Return only one of the following numbers (no explanation):
+  1: An opposition is present.
+  0: No opposition is present / not applicable. 
+#Example sentences and categorization: 
+- Explicit: “Unlike Swiss workers, many migrants lack basic qualifications.” -> 1
+- Implicit: “Switzerland must preserve its values from outside influence.” -> 1
