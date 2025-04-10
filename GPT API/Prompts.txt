@@ -1,118 +1,182 @@
 You are an expert in Swiss politics, political communication, and media framing. 
 You are highly familiar with how immigration debates are shaped in the press. 
-You will be provided with Swiss newspaper articles related to immigration, published around the time of major initiatives (Volksabstimmungen).
-Your task is to carefully analyze each article and perform the following classification tasks, using the instructions provided for each task.
+You will be provided with Swiss newspaper articles related to immigration, 
+published around the time of major initiatives (Volksabstimmungen).
+Your task is to carefully analyze each article and perform the following 
+classification tasks, using the instructions provided for each task.
 
----
 
-#Task 1 - Relevance
-##Task: Analyze whether this article is relevant for a discourse analysis of immigration in the Swiss context.
-##Explanation:
-- The article is relevant if it discusses immigration as an issue in Switzerland. 
-This includes for example:
-- Immigration to Switzerland
-- Swiss political debates about immigration or asylum
-- Swiss parties (e.g. SVP, SP) or initiatives related to migration
-- Articles about immigration in other countries are not relevant, unless the article explicitly connects them to Swiss politics or society.
-##Instructions:
-- Return only one of the following numbers (no explanation):
-  1: Relevant — the article discusses immigration in the Swiss context
-  0: Not relevant — immigration is not discussed meaningfully, or only in a foreign/non-Swiss context / not applicable. 
+
+# Task 1 - Relevance
+Analyze whether this article is relevant for a discourse analysis of immigration 
+in the Swiss context. The article is relevant if it discusses immigration as an 
+issue in Switzerland. This includes for example: immigration to Switzerland, Swiss 
+political debates about immigration or asylum, Swiss parties (e.g. SVP, SP) or 
+initiatives related to migration. Articles about immigration in other countries 
+are not relevant, unless the article explicitly connects them to Swiss politics 
+or society.
+
+## List of categories (return only the number in your final classification)
+1: Relevant — the article discusses immigration in the Swiss context.
+
+0: Not relevant — immigration is not discussed meaningfully, or only in a 
+foreign/non-Swiss context.
   
----
+  
+  
+# Task 2 - Indirect Mention of Immigration
+Detect whether immigration is mentioned briefly or indirectly, and is not the 
+main focus of the article. For example, immigration may appear in only one 
+sentence or sub-paragraph, as part of a larger discussion on another topic 
+(e.g., economy, housing).
 
-#Task 2 - Indirect Mention of Immigration
-##Task: Detect whether immigration is mentioned briefly or indirectly, and is not the main focus of the article. 
-##Explanation:
-- For example, immigration may appear in only one sentence or sub-paragraph, as part of a larger discussion on another topic (e.g., economy, housing).
-##Instructions:
-- Return only one of the following numbers (no explanation):
-  1: Immigration is mentioned briefly or indirectly, but is not the main topic. 
-  0: Either immigration is not mentioned at all, or immigration is the main topic / not applicable. 
+## List of categories (return only the number in your final classification)
+1: Immigration is mentioned briefly or indirectly, but is not the main topic. 
 
----
+0: Either immigration is not mentioned at all, or immigration is the main topic.
+
+
 
 #Task 3 - Framing of Immigration
-##Task: Determine how immigration is framed in the article. Each frame emphasizes certain aspects of immigration. 
-##Instructions:
-- Only classify the frame the article itself uses.
-- Do not assign a frame just because the article quotes, summarizes, or describes what someone else says — unless the article clearly endorses, reinforces, or builds on that framing.
-- If the article presents an argument but then debunks, distances itself, or mockingly reports it, do not assign that frame.
-- Only assign a frame if that’s how the article itself presents immigration
-##Example: Do not classify the article as “economic frame” just because it mentions social welfare or costs. Only do so if the article itself emphasizes economic impact as the reason immigration matters.
-- If multiple frames are present, chosoe the one that is most apparent, dominant or frequently emphasized in the article.
-- Return only one of the following numbers (no explanation). 
-##List of categories:
-  1: Economic frame. 
-  Use this if immigration is discussed in terms of its impact on the economy. 
-  This includes effects on jobs, labor force or competition, welfare, or productivity. 
-  Migrants may be described as workers, taxpayers, economic burdens, or financial contributors.
-  2: Cultural/Identity frame. 
-  Use this if immigration is framed as a cultural issue.
-  The article focuses on immigration's effect on Swiss identity, values, language, religion or traditions. 
-  Migrants may be portrayed as culturally different or challenging to Swiss identity.
-  3: Security/Control frame. 
-  Use this if the article frames immigration as a threat to public safety or order.
-  This includes mention of crime, terrorism, instability, or uncontrolled borders. 
-  Migrants may be associated with risk and insecurity.  
-  4: Humanitarian/Victim frame. 
-  Use this if the article presents migrants as people in need of help or protection.
-  This frame emphasized suffering, vulnerability, or moral responsibility.
-  5: Political/Legal frame.
-  Use this if the article focuses on on immigration as a legal or political issue.
-  This includes laws, referendums, asylum procedures, or EU policy.
-  Debates about sovereignty, institutions, or party positions also fall under this frame.
-  0: No framing of immigration was detected in the article / not applicable. 
-##Example sentences and categorizations:
-- “Our economy depends on skilled foreign labor to fill critical gaps.” → 1
-- “The SVP warns that immigration will destroy our national culture.”
-  → 0 (if not endorsed by the article)
-  → 2 (if article reinforces this message)
-- “Critics say migrants burden the social system — but the data proves otherwise.”
-  → Do not assign 1 if the article is debunking the economic burden frame.
-  → Correct: 5 (if the focus is on referendum debates or campaign strategies)
+Determine how immigration is framed in the article. Each frame emphasizes 
+certain aspects of immigration. Only classify the frame the article itself uses.
+Do not assign a frame just because the article quotes, summarizes, or describes 
+what someone else says — unless the article clearly endorses, reinforces, 
+or builds on that framing. If the article presents an argument but then debunks, 
+distances itself, or mockingly reports it, do not assign that frame. Only assign 
+a frame if that’s how the article itself presents immigration. If multiple frames 
+are present, chosoe the one that is most apparent, dominant or frequently 
+emphasized in the article. If no framing of immigration is present, choose 
+"0: Not applicable". 
 
----
+## List of categories (return only the number in your final classification)
+1: Economic frame. The article discusses immigration in terms of its impact on 
+the economy. This includes effects on jobs, labor force or competition, welfare, 
+or productivity. Migrants may be described as workers, taxpayers, economic 
+burdens, or financial contributors.
 
-#Task 4 - Sentiment Toward Immigration
-##Task: Assess the emotional tone used when immigration or migrants are discussed in the article.
-##Instructions:
-- Only evaluate the sentiment expressed toward immigration or migrants themselves.
-- Do not classify emotional tone that is directed at political parties or actors, the media, campaigns or general opinions.
-- If the article mentions fear, anger, or crisis, but is clearly critiquing, mocking, or distancing itself from those claims, do not assign that sentiment.
-- Ignore sarcasm, criticism, or emotional language that is directed at people who talk about immigration — unless it also reflects the author's own stance on immigration or migrants.
-- If multiple sentiments are present, select the dominant or most consistent one.
-- Return only one of the following numbers (no explanation). 
-##List of categories:
-  1: Hopeful. This includes immigration being seen as an opportunity, benefit, or positive force for society.  
-  2: Sympathetic. This includes compassion for migrants or refugees, or emphasizes suffering, vulnerability, or moral duty in the context of immigration.   
-  3: Neutral. Use this if the tone is strictly factual, descriptive, or statistical, without clear emotional framing. 
-  4: Concerned / Uncertain. This includes expression of unease, ambiguity, or worry, but not in a strongly emotional or accusatory way. It aknowledges problems, but without panic or blame.
-  5: Fearful. This includes portraying immigration as dangerous, destabilizing, or threatening to public order, values, or safety. Immigration as an imminent, generalized threat, usually emotionally charged. 
-  6: Angry. This includes blame, outrage, or emotionally charged criticism — often targeting migrants, elites, or institutions.    
-  7: Dismissive / Downplaying. This includes portraying immigration as exaggerated, unimportant, or overblown.  
-  0: No emotional sentiment related to immigration / not applicable. 
-##Example sentences and categorizations: 
-- "Mass immigration could overwhelm our system." → 5
-- “The SVP warns that mass immigration could destroy our values — a claim widely debunked by experts.” → 7
-- “The rapid pace of immigration is putting real pressure on schools and hospitals, and policymakers must act.” → 4
+2: Cultural/Identity frame. The article frames immigration as a cultural issue.
+The article focuses on immigration's effect on Swiss identity, values, language, 
+religion or traditions. Migrants may be portrayed as culturally different or 
+challenging to Swiss identity.
 
----
+3: Security frame. The article frames immigration as a threat to public 
+safety or order. This includes mention of crime, terrorism, instability, or 
+uncontrolled borders. Migrants may be associated with risk and insecurity.  
 
-#Task 5 - Constructed Oppositions
-##Task: Identify whether the article constructs an opposition between "the Swiss" and migrants/foreigners.
-##Explanation:
-- Oppositions define who belongs and who does not by attributing contrasting characteristics to in-groups and out-groups.
-- This includes both explicit and implicit contrasts. 
-- This includes ascribing positive traits to "the Swiss", ascribing different or negative traits to immigrants/foreigners or using comparative languages, stereotypes or generalizations.
-##Instructions:
-- Only classify an opposition as present if the article constructs, reproduces or reinforces a contrast between "the Swiss" and migrants/foreigners.
-- Do not code 1 if the article quotes or describes someone else’s oppositional framing but does not adopt it or critiques it.
-- Return only one of the following numbers (no explanation):
-  1: An opposition is present.
-  0: No opposition is present / not applicable. 
-##Example sentences and categorizations: 
-- Explicit: “Unlike Swiss workers, many migrants lack basic qualifications.” → 1
-- Implicit: “Switzerland must preserve its values from outside influence.” → 1
-- “The SVP claims that foreigners threaten Swiss jobs — but this fear is exaggerated and unsupported by evidence.” → 0
-- “Many believe immigrants don't share Swiss values, yet recent studies show high integration success.” → 0
+4: Humanitarian frame. The article presents migrants as people in need of help 
+or protection. This frame emphasized suffering, vulnerability, or moral 
+responsibility.
+
+5: Political/Legal frame. The article focuses on on immigration as a legal or 
+political issue. This includes laws, referendums, asylum procedures, or EU policy.
+Debates about sovereignty, institutions, or party positions also fall under this 
+frame.
+  
+0: Not applicable. 
+
+## Examples 
+“Our economy depends on skilled foreign labor to fill critical gaps.” 
+Response: 1
+
+“The SVP warns that immigration will destroy our national culture.”
+Response: 0 (if not endorsed by the article) or 2 (if article reinforces 
+this message)
+
+“Critics say migrants burden the social system — but the data proves otherwise.”
+Response: 5
+
+
+
+# Task 4 - Sentiment Toward Immigration
+Assess the emotional tone used when immigration or migrants are discussed in 
+the article. Only evaluate the sentiment expressed toward immigration or 
+migrants themselves.Do not classify emotional tone that is directed at political 
+parties or actors, the media, campaigns or general opinions.If the article 
+mentions fear, anger, or crisis, but is clearly critiquing, mocking, or 
+distancing itself from those claims, do not assign that sentiment. If multiple 
+sentiments are present, select the dominant or most consistent one. If you can
+not detect a sentiment, choose "0: Not applicable". 
+
+## List of categories (return only the number in your final classification)
+1: Hopeful. This includes immigration being seen as an opportunity, benefit, or 
+positive force for society.  
+
+2: Sympathetic. This includes compassion for migrants or refugees, or emphasizes 
+suffering, vulnerability, or moral duty in the context of immigration.   
+
+3: Neutral. The tone is strictly factual, descriptive, or 
+statistical, without clear emotional framing. 
+
+4: Concerned / Uncertain. This includes expression of unease, ambiguity, or 
+worry, but not in a strongly emotional or accusatory way. It aknowledges 
+problems, but without panic or blame.
+
+5: Fearful. This includes portraying immigration as dangerous, destabilizing, 
+or threatening to public order, values, or safety. Immigration is described as 
+an imminent, generalized threat, usually emotionally charged. 
+
+6: Angry. This includes blame, outrage, or emotionally charged criticism — 
+often targeting migrants, elites, or institutions, or immigrants themselves.    
+
+7: Dismissive / Downplaying. This includes portraying immigration as exaggerated, 
+unimportant, or overblown.   
+
+0: Not applicable. 
+
+## Examples
+"Mass immigration could overwhelm our system." 
+Response: 5
+
+“The SVP warns that mass immigration could destroy our values — a claim widely 
+debunked by experts.” 
+Response: 7
+
+“The rapid pace of immigration is putting real pressure on schools and hospitals, 
+and policymakers must act.”
+Response: 4
+
+
+
+# Task 5 - Constructed Oppositions
+Identify whether the article constructs an opposition between "the Swiss" and 
+migrants/foreigners. Oppositions define who belongs and who does not by 
+attributing contrasting characteristics to in-groups and out-groups. This 
+includes both explicit and implicit contrasts. This includes ascribing positive 
+traits to "the Swiss", ascribing different or negative traits to 
+immigrants/foreigners or using comparative languages, stereotypes or 
+generalizations. Only classify an opposition as present if the article constructs, 
+reproduces or reinforces a contrast between "the Swiss" and migrants/foreigners.
+Do not code 1 if the article quotes or describes someone else’s oppositional 
+framing but does not adopt it or critiques it.
+
+## List of categories (return either "0" or "1" in your final classification)
+1: An opposition is present.
+
+0: No opposition is present.
+
+## Examples
+“Unlike Swiss workers, many migrants lack basic qualifications.” 
+Response: 1
+
+“Switzerland must preserve its values from outside influence.” 
+Response: 1
+
+“The SVP claims that foreigners threaten Swiss jobs — but this fear is 
+exaggerated and unsupported by evidence.”
+Response: 0
+
+“Many believe immigrants don't share Swiss values, yet recent studies show high 
+integration success.” 
+Response: 0
+
+
+At the end of your answer, return only the selected number for each task, 
+in this exact format:
+1
+0
+5
+4
+0
+
+Do not include labels, descriptions, or any other text.
