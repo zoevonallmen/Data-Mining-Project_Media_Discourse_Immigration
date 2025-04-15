@@ -167,3 +167,28 @@ frame <- rep(NA_character_, n_articles)
 sentiment <- rep(NA_character_, n_articles)
 opposition <- rep(NA_character_, n_articles)
 
+#Loop over all articles ------------------------------------------------------
+for (i in 1:n_articles) {
+  cat("Processing article", i, "of", n_articles, "\n")
+  result <- classify_article(article_text = articles$content[i], prompt_text = prompt)
+  
+  Sys.sleep(2)
+  
+  if (!is.na(result)) {
+    task_values <- strsplit(result, "\n")[[1]]
+    task_values <- trimws(task_values)
+    
+    if (length(task_values) >= 5) {
+      relevance[i] <- task_values[1]
+      indirect[i] <- task_values[2]
+      frame[i] <- task_values[3]
+      sentiment[i] <- task_values[4]
+      opposition[i] <- task_values[5]
+    } else {
+      cat("Unexpected output format for article", i, "\n")
+    }
+  } else {
+    cat("Classification failed for article", i, "\n")
+  }
+}
+  
