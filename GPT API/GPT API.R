@@ -1,4 +1,6 @@
+#final code--------------------------------------------------------------
 library(readr)
+
 
 prompt <- read_file("GPT API/Prompts.txt")
 articles <-read_csv("Data/Final_Articles.csv")
@@ -103,3 +105,65 @@ articles$opposition[1:2] <- opposition
 
 write.csv(articles[1:2, ], "classified_articles_with_tasks_2_articles.csv", row.names = FALSE)
 help <- read.csv("classified_articles_with_tasks_2_articles.csv")
+
+
+#FINAL CODE-------------------------------------------------------------------
+
+#Load libraries---------------------------------------------------------------
+library(readr)
+library(httr)
+library(jsonlite)
+
+#Load data, prompt, api key, url-----------------------------------------------
+prompt <- read_file("GPT API/Prompts.txt")
+articles <-read_csv("Data/Final_Articles.csv")
+api_key <- readLines("Access Tokens/GPT API Key.txt")
+openai_url <- "https://api.openai.com/v1/chat/completions"
+
+#Function to classify single article--------------------------------------------
+classify_article <- function(article_text, prompt_text, retries = 3) {
+  messages <- list(
+    list(
+      role = "system", 
+      content = paste(prompt_text, article_text, sep = "\nHere is the article for you to code: ")
+    )
+  )
+  
+  attempt <- 1
+  repeat {
+    response <- tryCatch({
+      POST(
+        url = openai_url,
+        add_headers(
+          Authorization = paste("Bearer", api_key),
+          `Content-Type` = "application/json"
+        ),
+        body = toJSON(list(
+          model = "gpt-4o",
+          messages = messages,
+          temperature = 0
+        ), auto_unbox = TRUE)
+      )
+    }, error = function(e) return(NULL))
+    
+    if (!is.null(response) && status_code(response) == 200) {
+      result <- content(response, as = "parsed", simplifyVector = TRUE)
+      return(result$choices[[1]]$message$content)
+    } else {
+      cat("Retry", attempt, "- failed for article\n")
+      attempt <- attempt + 1
+      if (attempt > retries) return(NA)
+      Sys.sleep(5) 
+    }
+  }
+}
+
+#Storage vectors--------------------------------------------------------------
+
+n_articles <- nrow(articles)
+relevance <- rep(NA_character_, n_articles)
+indirect <- rep(NA_character_, n_articles)
+frame <- rep(NA_character_, n_articles)
+sentiment <- rep(NA_character_, n_articles)
+opposition <- rep(NA_character_, n_articles)
+
