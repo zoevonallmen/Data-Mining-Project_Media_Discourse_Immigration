@@ -192,3 +192,15 @@ for (i in 1:n_articles) {
   }
 }
   
+
+#Save to original dataset------------------------------------------------------
+df <- data.frame(
+  relevance = relevance,
+  indirect = indirect,
+  frame = frame,
+  sentiment = sentiment,
+  opposition = opposition
+)
+articles <- cbind(articles, final_df)
+
+write.csv(articles, "classified_articles_final.csv", row.names = FALSE)
