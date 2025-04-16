@@ -37,7 +37,7 @@ Joined_Data_filtered |>
   map(table)
 
 
-#Distrbution of Task 3 - Frames------------------------------------------------
+#Distribution of Task 3 - Frames------------------------------------------------
 Joined_Data_filtered |> 
   count(code_3)
 
@@ -62,7 +62,7 @@ table(Joined_Data_filtered$medium_name, Joined_Data_filtered$code_3)
 
 #Barely any classifications for 3 = security frame / 4 = humanitarian frame
 #Low for 2 = Cultural / identity frame
-#BUT: Only four classified artciles with no frame (0)
+#BUT: Only four classified articles with no frame (0)
 #Mostly 5 = political/legal frame --> classification issue? 
 
 
@@ -95,3 +95,28 @@ frame_by_medium_plot <- ggplot(Joined_Data_filtered, aes(x = medium_name, fill =
   theme_minimal()
 
 ggsave("Outputs/Frame_By_Medium.png", plot = frame_by_medium_plot) 
+
+#Distribution of Task 4 - Sentiment ---------------------------------------------
+
+Joined_Data_filtered |> 
+  count(code_4)
+
+Joined_Data_filtered |> 
+  group_by(medium_name, code_3) |> 
+  summarise(n = n()) |> 
+  ungroup()
+
+library(ggplot2)
+
+Sentiment_Distribution_Plot <- Joined_Data_filtered |> 
+  ggplot(aes(x = factor(code_4), fill = medium_name)) +
+  geom_bar(position = "dodge") +
+  scale_fill_brewer(palette = "Pastel1") + 
+  labs(x = "Sentiment", y = "Number of Articles", fill = "Medium") +
+  theme_minimal()
+
+ggsave("Outputs/Sentiment_Distribution.png", plot = Sentiment_Distribution_Plot) 
+
+
+
+
