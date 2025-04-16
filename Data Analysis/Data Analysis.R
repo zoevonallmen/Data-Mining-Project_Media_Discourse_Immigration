@@ -88,10 +88,10 @@ Joined_Data_filtered |>
   ungroup()
 
 #Plot Frame x Medium
-ggplot(Joined_Data_filtered, aes(x = medium_name, fill = task3_collapsed)) +
+frame_by_medium_plot <- ggplot(Joined_Data_filtered, aes(x = medium_name, fill = task3_collapsed)) +
   geom_bar(position = "fill") +  
   scale_fill_brewer(palette = "Pastel1") + 
   labs(y = "Proportion of Frames", fill = "Frame Type") +
   theme_minimal()
 
-
+ggsave("Outputs/Frame_By_Medium.png", plot = frame_by_medium_plot) 
