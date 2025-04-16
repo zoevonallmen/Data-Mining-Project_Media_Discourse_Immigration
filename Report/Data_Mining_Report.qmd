@@ -85,9 +85,101 @@ More precisely, the following sub-questions should be answered:
 
 # Data & Method
 
-## Discussion
+**Article collection**
 
-## LIMITATIONS:
+Relevant newspaper articles were collected via the Swissdox API, which provides
+a wide range of Swiss news outlets. The sample collected contains only articles
+written in the german language.
+
+Selection criteria included:
+
+- *Keyword filtering*: Articles were retrieved based on keyword searches intended
+to capture wide range of immigration-related articles. The final list of keywords included: 
+einwander* zuwander* asyl* flüchtling* Personenfreizügigkeit, überfremdung, migrationspolitik, migrationsabkommen, abschiebung, integrationspolitik
+These kewords were selected after initial testing and revising of sample articles to minimize irrelevant results. 
+
+- *Newspapers*: Seven major Swiss newspapers were selected to represent a range of ideological orientations: 
+- Basler Zeitung (BAZ) - right wing after ownership changed in
+2000? 
+- Blick -  
+- Wochenzeitung (WOZ): left-wing 
+- Weltwoche (WEW): right wing 
+- SRF: public boradcaster, politically neutral 
+- Neue Zürcher Zeitung (NZZ): economically liberal/rather conservative
+- Tagesanzeiger (TA) - centrist
+Only print versions of each newspaper were used to avoid duplicates and ensure consistent article structure over time, as some articles were retrieved from the early 2000's. 
+
+- *Time frames*: To focus on moments of increased politicization, four Swiss initiatives related to immigration were selected. For each initiative, a four week time period was defined, three weeks before and one week after the respective vote. The initiatives include the following: 
+- "Initiative für eine Regelung der Zuwanderung" (Initiative for regulating immigration), vote on 24.09.2001, time frame: 2000-06-24 to: 2000-10-24
+- "Initiative gege Masseneinwanderung" (Initiative against massimmigration), vote on 09.02.2014, time frame : 2013-11-09 to: 2014-03-09
+- Initiative "Stop Überbevölkerung" (Stop overpopulation), vote on 30.11.2014, 
+time frame: 2014-08-30 to: 2014-12-30
+- "Begrenzungsinitiative" (Restriction initiative), vote on 27.09.2020, 
+time frame: 2020-06-27 to: 2020-10-27
+
+In total, the fina sample based on these filters contained 1731 articles.
+
+**Classification via GPT API**
+
+To analyze the articles, the OpenAI GPT-4.0 API was used to perform classification tasks. The classifications was based on a custom prompt that defined five separate tasks. Each article was sent into the model in full text, with a detailed instruction. The full version of the prompt can be found in the appendix. 
+
+**Task Overview**
+Each article was coded along five dimensions: 
+
+- Task 1- Relevance: 
+Binary classification: 
+1: Relevant — the article discusses immigration in the Swiss context. 
+0: Not relevant — immigration is not discussed meaningfully, or only in a 
+foreign/non-Swiss context.
+
+- Task 2 - Indirect Mention of Immigration 
+Binary classification: 
+1: Immigration is mentioned briefly or indirectly, but is not the main topic. 
+0: Either immigration is not mentioned at all, or immigration is the main
+topic.
+
+- Task 3 - #Task 3 - Framing of Immigration 
+1: Economic 
+2: Cultural/Identity 
+3: Security 
+4: Humanitarian  
+5: Political/Legal  
+0: not applicable
+In the final evaluation, categories 3 (security), 4 (humanitarian) and 0(not applicable) were collapsed into a new label "9 = other", due to their low frequency. 
+
+- Task 4 - Sentiment Towards Immigration
+1: Hopeful. 
+2: Sympathetic. 
+3: Neutral.
+4: Concerned / Uncertain. 
+5: Fearful. 
+6: Angry.
+7: Dismissive / Downplaying. 
+For the analysis, due to the low frequencies of some frames, categories were recoded as follows: 
+Sentiment 1 (hopeful) and sentiment 2 (sympathetic) were merged into
+a category "8 - positive". 
+Sentiments 5 (fearful), 7 (dismissive)
+and 0 (not applicable) were collapsed into a new category "9 - other".
+
+Task 5 - Constructed Opposition 
+1: An opposition is present.
+0: No opposition is present.
+
+Each task included definitions, a more detailed explanation of the categories as well
+as example sentences and categorizations. Further, the GPT model was instructed to  act as an expert on Swiss politics, political communication and media discourse.
+Several test runs and prompt refinements based on the test runs were conducted before processing the full data set, to ensure the validity and consistency of the classification. For example, explanations were modified and examples
+of edge cases were added. After multiple test runs and quality checks,
+the full data set was processed. 
+
+**Final Sample**:
+Out of the initial 1731 articles, 706 could not be classified by the API. Of the remaining 1025 articles, the relevance task (Task 1) identified 772 articles as relevant for the research question. These 772 articles comprise the final data set which was used for the analysis. 
+
+
+**Data analysis** 
+
+## Results
+
+## Discussion
 
 # Bibliografie {.unnumbered}
 
