@@ -82,6 +82,11 @@ More precisely, the following sub-questions should be answered:
 
 # Theory
 
+- Framing Theory, esp. in immigration (used for categorization)
+- Agenda Setting, politicization, media ownership, media in direct dem. 
+- Sentiments in Immigration (used for categorization)
+- Identity costruction (immigration, media)
+
 
 # Data & Method
 
@@ -181,9 +186,19 @@ Out of the initial 1731 articles, 706 could not be classified by the API. Of the
 
 ## Discussion
 
+Any meaningful results? Answer to RS Questions? 
+
+Limitations: 
+- decreased sample size, big nr of errors/not classified by API
+- too few cases, collapsing/merging categories, unstable coefficients
+- time frame differences
+
 # Bibliografie {.unnumbered}
 
 # Appendix {.unnumbered}
+
+- AGP prompt
+- 
 
 ## R Code
 
