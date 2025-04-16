@@ -66,7 +66,7 @@ table(Joined_Data_filtered$medium_name, Joined_Data_filtered$code_3)
 #Mostly 5 = political/legal frame --> classification issue? 
 
 
-#Collapsing frames with not enough obs. into separate category "9 = others" ----
+#Collapsing frames with not enough obs. into separate category "9 = others" 
 
 Joined_Data_filtered <- Joined_Data_filtered |>
   mutate(code_3_numeric = as.numeric(as.character(code_3))) |>
@@ -78,7 +78,20 @@ Joined_Data_filtered <- Joined_Data_filtered |>
 Joined_Data_filtered <- Joined_Data_filtered |>
   mutate(task3_collapsed = as.factor(task3_collapsed))
 
+library(multinom)
 m_frames_medium <- multinom(task3_collapsed ~ medium_name, data = Joined_Data_filtered)
 summary(m_frames_medium)
+
+Joined_Data_filtered |> 
+  group_by(medium_name, task3_collapsed) |>
+  summarise(n = n()) |> 
+  ungroup()
+
+#Plot Frame x Medium
+ggplot(Joined_Data_filtered, aes(x = medium_name, fill = task3_collapsed)) +
+  geom_bar(position = "fill") +  
+  scale_fill_brewer(palette = "Pastel1") + 
+  labs(y = "Proportion of Frames", fill = "Frame Type") +
+  theme_minimal()
 
 
