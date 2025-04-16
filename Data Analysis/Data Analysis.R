@@ -30,3 +30,28 @@ Joined_Data_filtered <- Joined_Data |>
   filter(code_1 == 1) #772 obs left
 
 write_csv(Joined_Data_filtered, "Data/analysis_data_relevant_only.csv")
+
+#Distribution of media --------------------------------------------------------
+Joined_Data_filtered |> 
+  select(medium_name) |> 
+  map(table)
+
+
+#Distrbution of Task 3 - Frames------------------------------------------------
+Joined_Data_filtered |> 
+  count(code_3)
+
+Joined_Data_filtered |> 
+  group_by(medium_name, code_3) |> 
+  summarise(n = n()) |> 
+  ungroup()
+
+library(ggplot2)
+
+Joined_Data_filtered |> 
+  ggplot(aes(x = factor(code_3), fill = medium_name)) +
+  geom_bar(position = "dodge") +
+  scale_fill_brewer(palette = "Pastel1") + # Try Set1, Set2, Dark2, Pastel1
+  labs(x = "Frame", y = "Number of Articles", fill = "Medium") +
+  theme_minimal()
+
