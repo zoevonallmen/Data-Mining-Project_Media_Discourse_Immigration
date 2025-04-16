@@ -57,3 +57,28 @@ Frame_Distribution_Plot <- Joined_Data_filtered |>
 
 ggsave("Outputs/Frame_Distribution.png", plot = Frame_Distribution_Plot) 
 
+
+table(Joined_Data_filtered$medium_name, Joined_Data_filtered$code_3)
+
+#Barely any classifications for 3 = security frame / 4 = humanitarian frame
+#Low for 2 = Cultural / identity frame
+#BUT: Only four classified artciles with no frame (0)
+#Mostly 5 = political/legal frame --> classification issue? 
+
+
+#Collapsing frames with not enough obs. into separate category "9 = others" ----
+
+Joined_Data_filtered <- Joined_Data_filtered |>
+  mutate(code_3_numeric = as.numeric(as.character(code_3))) |>
+  mutate(task3_collapsed = case_when(
+    code_3_numeric %in% c(0, 3, 4) ~ 9,
+    TRUE ~ code_3_numeric
+  ))
+
+Joined_Data_filtered <- Joined_Data_filtered |>
+  mutate(task3_collapsed = as.factor(task3_collapsed))
+
+m_frames_medium <- multinom(task3_collapsed ~ medium_name, data = Joined_Data_filtered)
+summary(m_frames_medium)
+
+
