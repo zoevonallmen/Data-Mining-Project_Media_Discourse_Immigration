@@ -97,6 +97,17 @@ frame_by_medium_plot <- ggplot(Joined_Data_filtered, aes(x = medium_name, fill =
 
 ggsave("Outputs/Frame_By_Medium.png", plot = frame_by_medium_plot) 
 
+#Predicted frames
+library(ggeffects)
+pred_frame <- ggpredict(m_frames_medium, terms = "medium_name")
+
+Pred_Frame <- plot(pred_frame) +
+  ggtitle("Predicted Probabilities of Frame") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+ggsave("Outputs/Predicted_Frames_by_Medium.png", plot = Pred_Frame) 
+
 #Distribution of Task 4 - Sentiment ---------------------------------------------
 
 Joined_Data_filtered |> 
@@ -147,7 +158,6 @@ sentiment_by_medium_plot <- ggplot(Joined_Data_filtered, aes(x = medium_name, fi
   theme_minimal()
 
 ggsave("Outputs/Sentiment_By_Medium.png", plot = sentiment_by_medium_plot) 
-
 
 #Predicted sentiment
 library(ggeffects)
