@@ -20,22 +20,76 @@ execute:
 knitr:
   opts_chunk:
     message: false
+editor: 
+  markdown: 
+    wrap: 72
 ---
 
 # Introduction
 
+This paper investigates how immigration is discussed in Swiss media,
+specifically in the context of national initiatives and referendums.
+Using large-scale newspaper data and employing large language models for
+classification tasks, the project analyzes how immigration is framed,
+the emotional tone applied to it, and whether oppositional constructions
+("us" vs. "them") are present. It focuses media discourses during
+moments when political stakes were especially high, which is, during
+direct democratic votes, and examines how immigration is discussed by
+ideologically differing newspapers.
+
+Building on established literature (Q), the basis of this project is the
+assumption, that media plays an important role in the perception of
+diverse issues. That is not only through what they cover, but how they
+do so. through the use of certain linguistic concepts or the
+accentuation of certain aspects. Prior research has shown that media
+ownership and political orientation can influence the visibility and
+framing of certain topics. In Western Europe, and Switzerland in
+particular, immigration has become an increasingly salient and
+politicized issue (Q). Over the past two decades, Switzerland has held
+numerous initiatives and referendums directly addressing immigration,
+such as for example the "Masseneinwanderungsinitiative" (Massimmigration
+Initiative) in 2014 or the "Begrenzungsinitiative" (Restriction
+Initiative) in 2020. Most recently, the "Swiss People's Party" (SVP)
+launched a new initiative, called "Nachhaltigkeitsinitiative", which
+again addresses the topic of Swiss immigration.
+
+In a direct democratic country like Switzerland, media discourse is
+particularly relevant. As the Swiss people vote directly on these
+initiatives, public narratives, influenced by media consumption, can
+influence perceptions of migrants and even possibly influence policy
+support. Although Switzerland is often seen as a consensus-oriented
+democracy, signs of growing affective polarization suggest that media
+influence may be evolving (Q). This project further seeks to expand the
+discourse analysis by utilizing the recent advances in large language
+models to scale up what has traditionally been small-scale qualitative
+work. Features such as framing, sentiment, and opposition, which have
+often been identified manually before, are now extracted in a more
+systematic and large-scale way.
+
+In summary, this project aims to analyze media discourse of
+ideologically different media outlets at times where immigration is
+especially politicized and stakes are high - during the time of
+initiatives. The study therefor tries to answer the following research
+question: *How is immigration represented in Swiss media coverage during politically salient moments?* 
+
+More precisely, the following sub-questions should be answered:
+
+-   *What framing strategies and sentiments are used to define immigration and its implications in Swiss media during national initiatives?*
+
+-   *To what extent are oppositions constructed or reinforced in immigration coverage*
+
+-   *How does the use of these concepts vary across ideologically diverse newspapers?*
+
 # Theory
+
 
 # Data & Method
 
-## Results
-
 ## Discussion
 
+## LIMITATIONS:
 
 # Bibliografie {.unnumbered}
-
-
 
 # Appendix {.unnumbered}
 
@@ -46,5 +100,3 @@ knitr:
 #| eval: false
 
 ```
-
-
