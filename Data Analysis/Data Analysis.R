@@ -48,10 +48,12 @@ Joined_Data_filtered |>
 
 library(ggplot2)
 
-Joined_Data_filtered |> 
+Frame_Distribution_Plot <- Joined_Data_filtered |> 
   ggplot(aes(x = factor(code_3), fill = medium_name)) +
   geom_bar(position = "dodge") +
-  scale_fill_brewer(palette = "Pastel1") + # Try Set1, Set2, Dark2, Pastel1
+  scale_fill_brewer(palette = "Pastel1") + 
   labs(x = "Frame", y = "Number of Articles", fill = "Medium") +
   theme_minimal()
+
+ggsave("Outputs/Frame_Distribution.png", plot = Frame_Distribution_Plot) 
 
