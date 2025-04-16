@@ -168,4 +168,4 @@ Pred_Sentiment <- plot(pred_sentiment) +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-
+ggsave("Outputs/Predicted_Sentiments_by_Medium.png", plot = Pred_Sentiment) 
