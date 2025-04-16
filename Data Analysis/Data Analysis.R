@@ -36,6 +36,7 @@ Joined_Data_filtered |>
   select(medium_name) |> 
   map(table)
 
+Joined_Data_filtered$medium_name <- factor(Joined_Data_filtered$medium_name)
 
 #Distribution of Task 3 - Frames------------------------------------------------
 Joined_Data_filtered |> 
@@ -117,6 +118,34 @@ Sentiment_Distribution_Plot <- Joined_Data_filtered |>
 
 ggsave("Outputs/Sentiment_Distribution.png", plot = Sentiment_Distribution_Plot) 
 
+table(Joined_Data_filtered$medium_name, Joined_Data_filtered$code_4)
+#Similar problem as for task 3: only one obs without sentiment (0)
+#To few obs. for 1 = hopeful, 2 = sympathetic, 5 = fearful and 7 = dismissive
 
+#Join: 1 (hopeful) & 2 (sympathetic) => 8 = "positive"
+#Collapse 5 = fearful, 0 = not applicable and 7 = dismissive into 9 = "other"
+
+Joined_Data_filtered <- Joined_Data_filtered |>
+  mutate(code_4_numeric = as.numeric(as.character(code_4))) |>
+  mutate(task4_collapsed = case_when(
+    code_4_numeric %in% c(1, 2) ~ 8, #hopeful & sympathetic => positive
+    code_4_numeric %in% c(0, 5, 7) ~ 9, #not applicable, fearful, dismissive => other
+    TRUE ~ code_4_numeric
+  ))
+
+Joined_Data_filtered <- Joined_Data_filtered |>
+  mutate(task4_collapsed = as.factor(task4_collapsed))
+
+m_sentiment_medium <- multinom(task4_collapsed ~ medium_name, data = Joined_Data_filtered)
+summary(m_sentiment_medium)
+
+#Predicted sentiment
+library(ggeffects)
+pred_sentiment <- ggpredict(m_sentiment_medium, terms = "medium_name")
+
+Pred_Sentiment <- plot(pred_sentiment) +
+  ggtitle("Predicted Probabilities of Sentiment") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
 
