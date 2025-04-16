@@ -1,0 +1,50 @@
+---
+title: "Title Data Essay"
+subtitle: "Data mining project"
+author: 
+  - "Zoe von Allmen, zoe.vonallmen@stud.unilu.ch, 12-124-433"
+  - "Supervisor: Dr. Andrea De Angelis"
+date: today
+date-format: "D. MMMM YYYY"
+format: 
+  pdf:
+    documentclass: scrreprt
+    number-sections: true
+    toc: false
+fontsize: 12pt
+linestretch: 1.5
+geometry: left=2.5cm,right=2.5cm,top=3cm,bottom=3cm
+execute:
+  echo: false
+  warning: false
+knitr:
+  opts_chunk:
+    message: false
+---
+
+# Introduction
+
+# Theory
+
+# Data & Method
+
+## Results
+
+## Discussion
+
+
+# Bibliografie {.unnumbered}
+
+
+
+# Appendix {.unnumbered}
+
+## R Code
+
+```{r ref.label=knitr::all_labels()}
+#| echo: true
+#| eval: false
+
+```
+
+
