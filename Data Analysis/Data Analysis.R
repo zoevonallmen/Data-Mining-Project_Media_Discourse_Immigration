@@ -139,6 +139,16 @@ Joined_Data_filtered <- Joined_Data_filtered |>
 m_sentiment_medium <- multinom(task4_collapsed ~ medium_name, data = Joined_Data_filtered)
 summary(m_sentiment_medium)
 
+#Sentiment x Medium Plot
+sentiment_by_medium_plot <- ggplot(Joined_Data_filtered, aes(x = medium_name, fill = task4_collapsed)) +
+  geom_bar(position = "fill") +  
+  scale_fill_brewer(palette = "Pastel1") + 
+  labs(y = "Proportion of Sentiments", fill = "Sentiment Type") +
+  theme_minimal()
+
+ggsave("Outputs/Sentiment_By_Medium.png", plot = sentiment_by_medium_plot) 
+
+
 #Predicted sentiment
 library(ggeffects)
 pred_sentiment <- ggpredict(m_sentiment_medium, terms = "medium_name")
