@@ -115,7 +115,7 @@ range of ideological orientations:
 
 -   Basler Zeitung (BAZ) - right wing after ownership changed in 2000?
 
--   Blick -\
+-   Blick - tabloid
 
 -   Wochenzeitung (WOZ): left-wing
 
@@ -225,7 +225,7 @@ for the analysis.
 
 ## Results
 
-```{r}
+```{r, echo=FALSE, results='hide'}
 library(tidyverse)
 Joined_Data_filtered <- read_csv("Data/analysis_data_relevant_only.csv")
 nrow(Joined_Data_filtered)
@@ -243,7 +243,7 @@ WOZ.
 
 **Analysis of frames**
 
-```{r}
+```{r, echo=FALSE, results='hide'}
 Joined_Data_filtered <- Joined_Data_filtered |>
   mutate(code_3_numeric = as.numeric(as.character(code_3))) |>
   mutate(task3_collapsed = case_when(
@@ -257,6 +257,14 @@ Joined_Data_filtered <- Joined_Data_filtered |>
 library(nnet)
 m_frames_medium <- multinom(task3_collapsed ~ medium_name, data = Joined_Data_filtered)
 summary(m_frames_medium)
+
+library(ggeffects)
+pred_frame <- ggpredict(m_frames_medium, terms = "medium_name")
+
+Pred_Frame <- plot(pred_frame) +
+  ggtitle("Predicted Probabilities of Frame") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
 ```
 
@@ -277,21 +285,13 @@ may not be statistically significant.
 The following visualization shows the predicted probabilities of frames
 by newspaper.
 
-```{r}
-library(ggeffects)
-pred_frame <- ggpredict(m_frames_medium, terms = "medium_name")
-
-Pred_Frame <- plot(pred_frame) +
-  ggtitle("Predicted Probabilities of Frame") +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
-
+```{r, echo=FALSE}
 print(Pred_Frame)
 ```
 
 **Analysis of sentiment**
 
-```{r}
+```{r, echo=FALSE, results='hide'}
 Joined_Data_filtered |> 
   count(code_4)
 
@@ -346,13 +346,13 @@ esults should be interpreted with caution.
 The following visualization shows the predicted probabilities of
 sentiment by newspaper.
 
-```{r}
+```{r, echo=FALSE}
 print(Pred_Sentiment)
 ```
 
 **Analysis of constructed oppositions**
 
-```{r}
+```{r, echo=FALSE, results='hide'}
 Joined_Data_filtered |> 
   count(code_5)
 
@@ -394,7 +394,7 @@ significant deviations from the baseline.
 The following visualization shows the predicted probabilities of
 constructed opposition by newspaper.
 
-```{r}
+```{r, echo=FALSE}
 print(Pred_Opposition)
 ```
 
