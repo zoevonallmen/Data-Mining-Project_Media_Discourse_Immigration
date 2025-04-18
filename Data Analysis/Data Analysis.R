@@ -169,3 +169,24 @@ Pred_Sentiment <- plot(pred_sentiment) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
 ggsave("Outputs/Predicted_Sentiments_by_Medium.png", plot = Pred_Sentiment) 
+
+
+#Analysis of Task 5 - Oppositions ---------------------------------------------
+Joined_Data_filtered |> 
+  count(code_5)
+
+Joined_Data_filtered |> 
+  group_by(medium_name, code_5) |> 
+  summarise(n = n()) |> 
+  ungroup()
+
+Opposition_Distribution_Plot <- Joined_Data_filtered |> 
+  ggplot(aes(x = factor(code_5), fill = medium_name)) +
+  geom_bar(position = "dodge") +
+  scale_fill_brewer(palette = "Pastel2") + 
+  labs(x = "Constructed Opposition", 
+       y = "Number of Articles", 
+       fill = "Media Outlet") +
+  theme_minimal()
+
+ggsave("Outputs/Opposition_Distribution.png", plot = Opposition_Distribution_Plot)
