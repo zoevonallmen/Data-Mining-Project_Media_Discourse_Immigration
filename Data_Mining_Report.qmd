@@ -96,7 +96,7 @@ Framing theory explains how media influence perception by emphasizing certain as
 In Switzerland’s system of direct democracy, media plays a crucial role in shaping public debates around referendums and initiatives. Newspapers can act both as agenda-setters (McCombs & Shaw, 1972) and interpreters of political conflict. Research shows that ideological orientation and media ownership affect how issues like immigration are covered (Spirig, 2024; Strömbäck, 2008). During initiatives, when political stakes are high, media framing may help legitimize or challenge particular positions.
 
 3. Identity and Oppositional Framing
-Finally, this project draws on discourse theory to analyze how media construct boundaries between “us” (the Swiss) and “them” (immigrants). 
+Finally, this project draws on discourse theory to analyze how media construct boundaries between “us” (the Swiss) and “them” (immigrants). Oppositional identities are formed through language, often by assigning contrasting traits to in- and out-groups (Wodak et al., 2009, p. 33-35). In Switzerland, the SVP has played a key role in promoting exclusionary narratives (Skenderovic, 2009, p. 7-9), which could be reinforced or challenged in media discourse.
 
 
 # Data & Method
@@ -472,9 +472,13 @@ McCombs, M. E., & Shaw, D. L. (1972). The Agenda-Setting Function of Mass Media.
 
 Nabi, R. L. (2003). Exploring the Framing Effects of Emotion: Do Discrete Emotions Differentially Influence Information Accessibility, Information Seeking, and Policy Preference? Communication Research, 30(2), 224-247. https://doi.org/10.1177/0093650202250881 
 
+Skenderovic, D. (2009). The Radical Right in Switzerland: Continuity and Change, 1945–2000. Berghahn Books.
+
 Spirig, J. (2024). Politicians, Newspapers, and Immigration Referendums: Exploring the Boundaries of Media Effects. Political Communication, 41(5), 786–807. https://doi.org/10.1080/10584609.2024.2321539
 
 Strömbäck, J. (2008). Four Phases of Mediatization: An Analysis of the Mediatization of Politics. The International Journal of Press/Politics, 13(3), 228-246. https://doi.org/10.1177/1940161208319097 
+
+Wodak, R., de Cillia, R., Reisigl, M., & Liebhart, K. (2009). The Discursive Construction of National Identity. Edinburgh University Press.
 
 # Appendix {.unnumbered}
 
