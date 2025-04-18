@@ -69,8 +69,10 @@ In summary, this project aims to analyze media discourse of
 ideologically different media outlets at times where immigration is
 especially politicized and stakes are high - during the time of
 initiatives. The study therefor tries to answer the following research
-question:   *How is immigration represented in Swiss media coverage
-during politically salient moments?*
+question:  
+
+*How is immigration represented in Swiss media coverage during
+politically salient moments?*
 
 More precisely, the following sub-questions should be answered:
 
@@ -445,25 +447,19 @@ print(Pred_Opposition)
 
 This project examined how Swiss newspapers represent immigration in the
 context of politically salient moments, specifically during national
-initiatives and referendums. Based on the results of the analysis, the
-research questions are discussed and answered as follows.\
-Political and economic frames dominate the newspapers when it comes to
-immigration. Right-leaning newspapers, like Die Weltwoche, are more
-frequently employ opositional or cultural farmings, while liberal or
-centrist outlets(NZZ, SRF), focus on more on political or legal
-aspects.\
-Emotional tone, overall, is mostly neutral or concerned, although there
-were traces of anger and dismissiveness found. The right-wing newspaper
-Die Weltwoche, for example, appears more likely to express an angry
+initiatives and referendums. Using a large scale data set and a classification approach using large language models, the analysis focused on identifying patterns in framing, sentiment and the construction of oppositional identities ("us" vs. "them") across ideologically diverse newspapers. \
+The analysis reveals that political and economic frames dominate the newspapers when it comes to immigration. Right-leaning newspapers, like Die Weltwoche, are more
+frequently employ oppositional or cultural framings, portraying immigrants as culturally threatening or different, while liberal or centrist outlets(NZZ, SRF), focus on more on political or legal aspects, like portraying immigration in terms of referendums or institutional decisions. \
+Emotional tone, overall, is mostly neutral or concerned, indicating a tendency towards moderate reporting. Although certain outliers were found breaking this pattern: the right-wing newspaper Die Weltwoche, for example, appears more likely to express an angry
 sentiment, while the left-wing newspaper Die Wochenzeitung uses positive
-sentiments.\
+sentiments, such as hopefulness or sympathy. This suggests that even though reporting, especially with more centrist or politically neutral newspapers, remain less polarized,discourse on immigration can still be influenced by newspaper ideology or ownership. \
 The use of constructed oppositions, "us vs. them", is not uniform across
-the media landscape, Die Weltwoche and Die Wochenzeitung showed higher
-likelihoods of constructing such contrasts.\
-These findings suggest that even within a non-polarized media
+the media landscape. Die Weltwoche and, somewhat surprisingly, Die Wochenzeitung showed higher likelihoods of constructing such contrasts between "the Swiss" and migrants. This indicates that oppositional framing might not be limited to the political right and may serve different rhetoric purposes depending on the ideological orientation.\
+These findings suggest that within a media
 environment like Switzerland, ideological positioning influences how
 immigration is framed, especially during times of heightened public
-attention and direct democratic decision-making.
+attention and direct democratic decision-making. \
+However, these findings should be interpreted with caution. The regression results indicate that some coefficients may be unstable, and certain categories suffered from limited case numbers, which can reduce the robustness of statistical comparisons.
 
 ## Limitations
 
@@ -471,9 +467,9 @@ Despite these insights, several limitations affect the generalizability
 and validity of the findings. First of all, the use of the LLM for for
 the article classification introduced some constraints. The
 classification of the articles resulted in a substantial proportion of
-articles that couldn't be classified. Thus, the sample was reduced
-by about 40%. The smaller sample was problematic, as it limited the
-ability to make balanced comparisons across outlets with varying article
+articles that couldn't be classified. Thus, the sample was reduced by
+about 40%. The smaller sample was problematic, as it limited the ability
+to make balanced comparisons across outlets with varying article
 counts.\
 Additionally some regression results produced very large standard
 errors, which complicates the interpretation of statistical
@@ -492,7 +488,7 @@ suggesting either overclassification or that the framing categories were
 not sufficiently distinct. A similar issue could be seen in Task 4
 (Sentiment), where neutral or concerned tones were most frequently
 assigned, possibly indicating difficulty in differentiating between mild
-evaluative language and true neutrality.\
+evaluative language and true neutrality.  This shows the need for more detailed follow-up analysis. Investigating these specific cases more closely could shed light on whether such framings reflect irony, critique, or deeper discursive shifts.\
 Finally, the study was deliberately designed to only focus on periods
 around major initiatives. This increases the salience, however excludes
 regular reporting. It could be beneficial, to compare the discourse
