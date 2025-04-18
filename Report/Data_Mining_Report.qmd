@@ -264,10 +264,49 @@ To assess how the newspapers differ in sentiment used when discussing immigratio
 - Strong negative coefficients for Blick (–13.58) and Weltwoche (–12.48) indicate that positive sentiment was very unlikely in these outlets. Die Wochenzeitung stands out with a positive coefficient (2.31), indicating they used a rather hopeful or sympathetic tone.
 - However, some sentiment categories were underrepresented in the data set, eading to extreme or unstable coefficiets for certain outlets. esults should be interpreted with caution. 
 
-The following visualization shows the predicted probabilities of frames by newspaper.
+The following visualization shows the predicted probabilities of sentiment by newspaper.
 
 ```{r}
 print(Pred_Sentiment)
+```
+
+**Analysis of constructed oppositions**
+
+```{r}
+Joined_Data_filtered |> 
+  count(code_5)
+
+Joined_Data_filtered |> 
+  group_by(medium_name, code_5) |> 
+  summarise(n = n()) |> 
+  ungroup()
+
+Joined_Data_filtered <- Joined_Data_filtered |> 
+  mutate(code_5 = as.factor(code_5))
+
+m_opposition_medium <- glm(code_5 ~ medium_name, 
+                           data = Joined_Data_filtered, 
+                           family = binomial)
+
+summary(m_opposition_medium)
+
+pred_opposition <- ggpredict(m_opposition_medium, terms = "medium_name")
+Pred_Opposition <- plot(pred_opposition) +
+  ggtitle("Predicted Probability of Constructed Opposition by Media Outlet") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+To examines the presence and variation of constructed oppositions, a binary logistic regression was run. Constructed opposition (code_5) acts as the dependent variable, the newspapers as the predictor. Some key results are as follows: 
+- Die Weltwoche shows a significantly higher likelihood of constructing oppositions compared to the baseline (B = 1.10, p < 0.001), suggesting a stronger tendency to emphasize divides between "the Swiss" and migrants.
+- Die Wochenzeitung also had a significantly higher probability (B = 1.27, p < 0.05), though this result should be interpreted cautiously due to a smaller sample size.
+- In contrast, Neue Zürcher Zeitung was less likely to have oppositional framing present (B = -0.54, p = 0.049).
+- The remaining outlets, including Blick, Tages-Anzeiger, and SRF, did not show statistically significant deviations from the baseline.
+
+The following visualization shows the predicted probabilities of constructed opposition by newspaper.
+
+```{r}
+print(Pred_Opposition)
 ```
 
 ## Discussion
