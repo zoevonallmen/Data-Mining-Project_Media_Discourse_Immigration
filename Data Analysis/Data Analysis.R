@@ -190,3 +190,21 @@ Opposition_Distribution_Plot <- Joined_Data_filtered |>
   theme_minimal()
 
 ggsave("Outputs/Opposition_Distribution.png", plot = Opposition_Distribution_Plot)
+
+Joined_Data_filtered <- Joined_Data_filtered |> 
+  mutate(code_5 = as.factor(code_5))
+
+m_opposition_medium <- glm(code_5 ~ medium_name, 
+                           data = Joined_Data_filtered, 
+                           family = binomial)
+
+summary(m_opposition_medium)
+
+pred_opposition <- ggpredict(m_opposition_medium, terms = "medium_name")
+Pred_Opposition <- plot(pred_opposition) +
+  ggtitle("Predicted Probability of Constructed Opposition by Media Outlet") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+ggsave("Outputs/Predicted_Opposition_by_Medium.png", plot = Pred_Opposition)
+
