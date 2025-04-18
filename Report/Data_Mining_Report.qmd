@@ -37,7 +37,7 @@ moments when political stakes were especially high, which is, during
 direct democratic votes, and examines how immigration is discussed by
 ideologically differing newspapers.
 
-Building on established literature (Q), the basis of this project is the
+Building on established literature, the basis of this project is the
 assumption, that media plays an important role in the perception of
 diverse issues. That is not only through what they cover, but how they
 do so. through the use of certain linguistic concepts or the
@@ -57,13 +57,7 @@ In a direct democratic country like Switzerland, media discourse is
 particularly relevant. As the Swiss people vote directly on these
 initiatives, public narratives, influenced by media consumption, can
 influence perceptions of migrants and even possibly influence policy
-support. Although Switzerland is often seen as a consensus-oriented
-democracy, signs of growing affective polarization suggest that media
-influence may be evolving (Q). This project further seeks to expand the
-discourse analysis by utilizing the recent advances in large language
-models to scale up what has traditionally been small-scale qualitative
-work. Features such as framing, sentiment, and opposition, which have
-often been identified manually before, are now extracted in a more
+support. This project further seeks to expand the discourse analysis by utilizing the recent advances in large language models to scale up what has traditionally been small-scale qualitative work. Features such as framing, sentiment, and opposition, which have often been identified manually before, are now extracted in a more
 systematic and large-scale way.
 
 In summary, this project aims to analyze media discourse of
@@ -82,6 +76,7 @@ More precisely, the following sub-questions should be answered:
 
 # Theory
 
+The theoretical basis for this project include framing theory, political communication and media and the construction of oppositiional identities.
 - Framing Theory, esp. in immigration (used for categorization)
 - Agenda Setting, politicization, media ownership, media in direct dem. 
 - Sentiments in Immigration (used for categorization)
@@ -176,13 +171,104 @@ Several test runs and prompt refinements based on the test runs were conducted b
 of edge cases were added. After multiple test runs and quality checks,
 the full data set was processed. 
 
+Categorization based on...
+
 **Final Sample**:
 Out of the initial 1731 articles, 706 could not be classified by the API. Of the remaining 1025 articles, the relevance task (Task 1) identified 772 articles as relevant for the research question. These 772 articles comprise the final data set which was used for the analysis. 
 
-
-**Data analysis** 
-
 ## Results
+```{r}
+Joined_Data_filtered <- read_csv("Data/analysis_data_relevant_only.csv")
+nrow(Joined_Data_filtered)
+
+Joined_Data_filtered |> 
+  select(medium_name) |> 
+  map(table)
+```
+The final data set consists of 772 articles. This includes 169 articles of the Basler Zeitung (BAZ), 175 articles of the Tages-Anzeiger (TA), 172 articles of the Neue Zürcher Zeitung (NZZ), 124 articles of SRF, 68 articles of Blick, 53 articles of Die Weltwoche and 15 articles of the WOZ. 
+
+**Analysis of frames**
+```{r}
+Joined_Data_filtered <- Joined_Data_filtered |>
+  mutate(code_3_numeric = as.numeric(as.character(code_3))) |>
+  mutate(task3_collapsed = case_when(
+    code_3_numeric %in% c(0, 3, 4) ~ 9,
+    TRUE ~ code_3_numeric
+  ))
+
+Joined_Data_filtered <- Joined_Data_filtered |>
+  mutate(task3_collapsed = as.factor(task3_collapsed))
+
+library(nnet)
+m_frames_medium <- multinom(task3_collapsed ~ medium_name, data = Joined_Data_filtered)
+summary(m_frames_medium)
+
+```
+
+To examine the newspaper's use of different frames a multinominal logictic regression was conducted, with the reference category economic frame (frame 1). Key results are as follows:
+- Some outlets showed higher odds of using cultural frames over economic ones. For example, Die Wochenzeitung and Die Weltwoche had positive coefficients for this comparison (1.13 and 0.72 respectively), suggesting these outlets are more likely to frame immigration culturally than economically.
+- SRF and Neue Zürcher Zeitung (NZZ) had positive coefficients, indicating they are more likely to use a political/legal frame than an economic one, particularly SRF (coefficient = 1.07).
+- The model suggests a reasonable model fit (Residual Deviance = 1020.71, AIC = 1062.71), however standard errors for most coefficients are very large, which suggests that they may not be statistically significant. 
+
+The following visualization shows the predicted probabilities of frames by newspaper.
+
+```{r}
+library(ggeffects)
+pred_frame <- ggpredict(m_frames_medium, terms = "medium_name")
+
+Pred_Frame <- plot(pred_frame) +
+  ggtitle("Predicted Probabilities of Frame") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+print(Pred_Frame)
+```
+**Analysis of sentiment**
+
+```{r}
+Joined_Data_filtered |> 
+  count(code_4)
+
+Joined_Data_filtered |> 
+  group_by(medium_name, code_3) |> 
+  summarise(n = n()) |> 
+  ungroup()
+
+Joined_Data_filtered <- Joined_Data_filtered |>
+  mutate(code_4_numeric = as.numeric(as.character(code_4))) |>
+  mutate(task4_collapsed = case_when(
+    code_4_numeric %in% c(1, 2) ~ 8, #hopeful & sympathetic => positive
+    code_4_numeric %in% c(0, 5, 7) ~ 9, #not applicable, fearful, dismissive => other
+    TRUE ~ code_4_numeric
+  ))
+
+Joined_Data_filtered <- Joined_Data_filtered |>
+  mutate(task4_collapsed = as.factor(task4_collapsed))
+
+m_sentiment_medium <- multinom(task4_collapsed ~ medium_name, data = Joined_Data_filtered)
+summary(m_sentiment_medium)
+
+#Predicted sentiment
+library(ggeffects)
+pred_sentiment <- ggpredict(m_sentiment_medium, terms = "medium_name")
+
+Pred_Sentiment <- plot(pred_sentiment) +
+  ggtitle("Predicted Probabilities of Sentiment") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+To assess how the newspapers differ in sentiment used when discussing immigration, a multinominal logistic regression was run, with sentiment type as outcome and media outlet as predictor. The neutral tone acts as reference category. Key results are as follows:
+- Most media outlets did not show strong deviations from neutrality. However, Die Wochenzeitung had a positive coefficient (1.30), suggesting that compared to neutral tone, it was more likely to use a concerned tone. 
+- Die Weltwoche and Die Wochenzeitung had relatively strong positive coefficients (1.42 and 2.20), suggesting these outlets may use more emotionally critical or accusatory language than others. SRF and NZZ, in contrast, had negative coefficients, indicating they were less likely to express anger relative to a neutral tone.
+- Strong negative coefficients for Blick (–13.58) and Weltwoche (–12.48) indicate that positive sentiment was very unlikely in these outlets. Die Wochenzeitung stands out with a positive coefficient (2.31), indicating they used a rather hopeful or sympathetic tone.
+- However, some sentiment categories were underrepresented in the data set, eading to extreme or unstable coefficiets for certain outlets. esults should be interpreted with caution. 
+
+The following visualization shows the predicted probabilities of frames by newspaper.
+
+```{r}
+print(Pred_Sentiment)
+```
 
 ## Discussion
 
