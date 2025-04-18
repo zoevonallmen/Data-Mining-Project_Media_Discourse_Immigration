@@ -45,7 +45,7 @@ accentuation of certain aspects. Prior research has shown that media
 ownership and political orientation can influence the visibility and
 framing of certain topics. In Western Europe, and Switzerland in
 particular, immigration has become an increasingly salient and
-politicized issue (Q). Over the past two decades, Switzerland has held
+politicized issue. Over the past two decades, Switzerland has held
 numerous initiatives and referendums directly addressing immigration,
 such as for example the "Masseneinwanderungsinitiative" (Massimmigration
 Initiative) in 2014 or the "Begrenzungsinitiative" (Restriction
@@ -87,14 +87,21 @@ More precisely, the following sub-questions should be answered:
 
 The theoretical basis for this project include framing theory, political
 communication and media and the construction of oppositiional
-identities. - Framing Theory, esp. in immigration (used for
-categorization) - Agenda Setting, politicization, media ownership, media
-in direct dem. - Sentiments in Immigration (used for categorization) -
-Identity costruction (immigration, media)
+identities. 
+
+1. Framing and Media Representations
+Framing theory explains how media influence perception by emphasizing certain aspects of an issue. Entman (1993) defines framing as selecting and emphasizing specific elements of reality to promote a particular interpretation. Immigration is often framed through economic, cultural, security, or humanitarian lenses (Eberl et al., 2018). Reporting can also vary in emotional tomes, such as fear or sympathy, which further shape public opinion (Nabi, 2003). 
+
+2. Media, Ideology, and Direct Democracy
+In Switzerland’s system of direct democracy, media plays a crucial role in shaping public debates around referendums and initiatives. Newspapers can act both as agenda-setters (McCombs & Shaw, 1972) and interpreters of political conflict. Research shows that ideological orientation and media ownership affect how issues like immigration are covered (Spirig, 2024; Strömbäck, 2008). During initiatives, when political stakes are high, media framing may help legitimize or challenge particular positions.
+
+3. Identity and Oppositional Framing
+Finally, this project draws on discourse theory to analyze how media construct boundaries between “us” (the Swiss) and “them” (immigrants). 
+
 
 # Data & Method
 
-**Article collection**
+## Article collection
 
 Relevant newspaper articles were collected via the Swissdox API, which
 provides a wide range of Swiss news outlets. The sample collected
@@ -102,7 +109,7 @@ contains only articles written in the german language.
 
 Selection criteria included:
 
-*Keyword filtering*: Articles were retrieved based on keyword searches
+*Keyword filtering**: Articles were retrieved based on keyword searches
 intended to capture wide range of immigration-related articles. The
 final list of keywords included: einwander\* zuwander\* asyl\*
 flüchtling\* Personenfreizügigkeit, überfremdung, migrationspolitik,
@@ -153,7 +160,7 @@ following:
 In total, the final sample based on these filters contained 1731
 articles.
 
-**Classification via GPT API**
+## Classification via GPT API
 
 To analyze the articles, the OpenAI GPT-4.0 API was used to perform
 classification tasks. The classifications was based on a custom prompt
@@ -241,7 +248,7 @@ of the Basler Zeitung (BAZ), 175 articles of the Tages-Anzeiger (TA),
 articles of Blick, 53 articles of Die Weltwoche and 15 articles of the
 WOZ.
 
-**Analysis of frames**
+## Analysis of frames
 
 ```{r, echo=FALSE, results='hide'}
 Joined_Data_filtered <- Joined_Data_filtered |>
@@ -289,7 +296,7 @@ by newspaper.
 print(Pred_Frame)
 ```
 
-**Analysis of sentiment**
+## Analysis of sentiment
 
 ```{r, echo=FALSE, results='hide'}
 Joined_Data_filtered |> 
@@ -350,7 +357,7 @@ sentiment by newspaper.
 print(Pred_Sentiment)
 ```
 
-**Analysis of constructed oppositions**
+## Analysis of constructed oppositions
 
 ```{r, echo=FALSE, results='hide'}
 Joined_Data_filtered |> 
@@ -422,7 +429,7 @@ environment like Switzerland, ideological positioning influences how
 immigration is framed, especially during times of heightened public
 attention and direct democratic decision-making.
 
-**Limitations**
+## Limitations
 
 Despite these insights, several limitations affect the generalizability
 and validity of the findings. First of all, the use of the LLM for for
@@ -457,9 +464,21 @@ during the initiatives with regular reporting periods.
 
 # References {.unnumbered}
 
+Eberl, J.-M., Meltzer, C. E., Heidenreich, T., Herrero, B., Lind, F., & Boomgaarden, H. G. (2018). The European media discourse on immigration and its effects: A Literature Review, Annals of the International Communication Association, 42(3), 207–223, https://doi.org/10.1080/23808985.2018.1497452
+
+Entman, R. M. (1993). Framing: Toward Clarification of a Fractured Paradigm. Journal of Communication, 43(4), 51–58.
+
+McCombs, M. E., & Shaw, D. L. (1972). The Agenda-Setting Function of Mass Media. Public Opinion Quarterly, 36(2), 176–187, https://doi.org/10.1086/267990
+
+Nabi, R. L. (2003). Exploring the Framing Effects of Emotion: Do Discrete Emotions Differentially Influence Information Accessibility, Information Seeking, and Policy Preference? Communication Research, 30(2), 224-247. https://doi.org/10.1177/0093650202250881 
+
+Spirig, J. (2024). Politicians, Newspapers, and Immigration Referendums: Exploring the Boundaries of Media Effects. Political Communication, 41(5), 786–807. https://doi.org/10.1080/10584609.2024.2321539
+
+Strömbäck, J. (2008). Four Phases of Mediatization: An Analysis of the Mediatization of Politics. The International Journal of Press/Politics, 13(3), 228-246. https://doi.org/10.1177/1940161208319097 
+
 # Appendix {.unnumbered}
 
-**Original prompt for the GPT API**
+## Original prompt for the GPT API
 
 You are an expert in Swiss politics, political communication, and media
 framing. You are highly familiar with how immigration debates are shaped
