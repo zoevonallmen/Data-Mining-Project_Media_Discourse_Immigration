@@ -310,14 +310,20 @@ The following visualization shows the predicted probabilities of constructed opp
 print(Pred_Opposition)
 ```
 
-## Discussion
+## Conclusion
 
-Any meaningful results? Answer to RS Questions? 
+This project examined how Swiss newspapers represent immigration in the context of politically salient moments, specifically during national initiatives and referendums. Based on the results of the analysis, the research questions are discussed and answered as follows. 
+Political ad economic frames dominate the newspapers when it comes to immigration. Right-leaning newspapers, like Die Weltwoche, are more frequently employ opositional or cultural farmings, while liberal or centrist outlets(NZZ, SRF), focus on more on political or legal aspects. 
+Emotional tone, overall, is mostly neutral or concerned, although there were traces of anger and dismissiveness found. The right-wing newspaper Die Weltwoche, for example, appears more likely to express an angry sentiment, while the left-wing newspaper Die Wochenzeitung uses positive sentiments. 
+The use of constructed oppositions, "us vs. them", is not uniform across the media landscape, Die Weltwoche and Die Wochenzeitung showed higher likelihoods of constructing such contrasts. 
+These findings suggest that even within a non-polarized media environment like Switzerland, ideological positioning influences how immigration is framed, especially during times of heightened public attention and direct democratic decision-making.
 
-Limitations: 
-- decreased sample size, big nr of errors/not classified by API
-- too few cases, collapsing/merging categories, unstable coefficients
-- time frame differences
+**Limitations**
+Despite these insights, several limitations affect the generalizability and validity of the findings. First of all, the use of the LLM for for the article classification introduced some constraints. The classification of the articles resulted in a substantial proportion of articles that couldn't be classified. Thus, the sample was thus reduced by about 40%. The smaller sample was problematic, as it limited the ability to make balanced comparisons across outlets with varying article counts. 
+Additionally Some regression results produced very large standard errors, which complicates the interpretation of statistical significance. In certain cases, the classifications also defied expectations. For instance, in Task 5 on constructed oppositions, it was surprising to find left-leaning, pro-immigration outlets categorized as constructing “us vs. them” narratives. This raises questions about whether the task prompt may have been misunderstood or too vague. Despite multiple rounds of prompt testing and refinement, the validation of outputs was done manually and on a small sample, which may have left some misclassifications undetected.
+Moreover, some categories may have been too broad, potentially reducing nuance. In Task 3 (Framing), the political/legal frame was very dominant, while the "no frame" category (0) was rarely used. This could suggesting either overclassification or that the framing categories were not sufficiently distinct. A similar issue could be seen in Task 4 (Sentiment), where neutral or concerned tones were most frequently assigned, possibly indicating difficulty in differentiating between mild evaluative language and true neutrality.
+Finally, the study was deliberately designed to only focus on periods around major initiatives. This increases the salience, however excludes regular reporting. It could be beneficial, to compare the discourse during the initiatives with regular reporting periods. 
+
 
 # Bibliografie {.unnumbered}
 
