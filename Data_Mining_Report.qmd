@@ -57,126 +57,174 @@ In a direct democratic country like Switzerland, media discourse is
 particularly relevant. As the Swiss people vote directly on these
 initiatives, public narratives, influenced by media consumption, can
 influence perceptions of migrants and even possibly influence policy
-support. This project further seeks to expand the discourse analysis by utilizing the recent advances in large language models to scale up what has traditionally been small-scale qualitative work. Features such as framing, sentiment, and opposition, which have often been identified manually before, are now extracted in a more
-systematic and large-scale way.
+support. This project further seeks to expand the discourse analysis by
+utilizing the recent advances in large language models to scale up what
+has traditionally been small-scale qualitative work. Features such as
+framing, sentiment, and opposition, which have often been identified
+manually before, are now extracted in a more systematic and large-scale
+way.
 
 In summary, this project aims to analyze media discourse of
 ideologically different media outlets at times where immigration is
 especially politicized and stakes are high - during the time of
 initiatives. The study therefor tries to answer the following research
-question: *How is immigration represented in Swiss media coverage during politically salient moments?* 
+question: *How is immigration represented in Swiss media coverage during
+politically salient moments?*
 
 More precisely, the following sub-questions should be answered:
 
--   *What framing strategies and sentiments are used to define immigration and its implications in Swiss media during national initiatives?*
+-   *What framing strategies and sentiments are used to define
+    immigration and its implications in Swiss media during national
+    initiatives?*
 
--   *To what extent are oppositions constructed or reinforced in immigration coverage*
+-   *To what extent are oppositions constructed or reinforced in
+    immigration coverage*
 
--   *How does the use of these concepts vary across ideologically diverse newspapers?*
+-   *How does the use of these concepts vary across ideologically
+    diverse newspapers?*
 
 # Theory
 
-The theoretical basis for this project include framing theory, political communication and media and the construction of oppositiional identities.
-- Framing Theory, esp. in immigration (used for categorization)
-- Agenda Setting, politicization, media ownership, media in direct dem. 
-- Sentiments in Immigration (used for categorization)
-- Identity costruction (immigration, media)
-
+The theoretical basis for this project include framing theory, political
+communication and media and the construction of oppositiional
+identities. - Framing Theory, esp. in immigration (used for
+categorization) - Agenda Setting, politicization, media ownership, media
+in direct dem. - Sentiments in Immigration (used for categorization) -
+Identity costruction (immigration, media)
 
 # Data & Method
 
 **Article collection**
 
-Relevant newspaper articles were collected via the Swissdox API, which provides
-a wide range of Swiss news outlets. The sample collected contains only articles
-written in the german language.
+Relevant newspaper articles were collected via the Swissdox API, which
+provides a wide range of Swiss news outlets. The sample collected
+contains only articles written in the german language.
 
 Selection criteria included:
 
-- *Keyword filtering*: Articles were retrieved based on keyword searches intended
-to capture wide range of immigration-related articles. The final list of keywords included: 
-einwander* zuwander* asyl* flüchtling* Personenfreizügigkeit, überfremdung, migrationspolitik, migrationsabkommen, abschiebung, integrationspolitik
-These kewords were selected after initial testing and revising of sample articles to minimize irrelevant results. 
+*Keyword filtering*: Articles were retrieved based on keyword searches
+intended to capture wide range of immigration-related articles. The
+final list of keywords included: einwander\* zuwander\* asyl\*
+flüchtling\* Personenfreizügigkeit, überfremdung, migrationspolitik,
+migrationsabkommen, abschiebung, integrationspolitik These kewords were
+selected after initial testing and revising of sample articles to
+minimize irrelevant results.
 
-- *Newspapers*: Seven major Swiss newspapers were selected to represent a range of ideological orientations: 
-- Basler Zeitung (BAZ) - right wing after ownership changed in
-2000? 
-- Blick -  
-- Wochenzeitung (WOZ): left-wing 
-- Weltwoche (WEW): right wing 
-- SRF: public boradcaster, politically neutral 
-- Neue Zürcher Zeitung (NZZ): economically liberal/rather conservative
-- Tagesanzeiger (TA) - centrist
-Only print versions of each newspaper were used to avoid duplicates and ensure consistent article structure over time, as some articles were retrieved from the early 2000's. 
+*Newspapers*: Seven major Swiss newspapers were selected to represent a
+range of ideological orientations:
 
-- *Time frames*: To focus on moments of increased politicization, four Swiss initiatives related to immigration were selected. For each initiative, a four week time period was defined, three weeks before and one week after the respective vote. The initiatives include the following: 
-- "Initiative für eine Regelung der Zuwanderung" (Initiative for regulating immigration), vote on 24.09.2001, time frame: 2000-06-24 to: 2000-10-24
-- "Initiative gege Masseneinwanderung" (Initiative against massimmigration), vote on 09.02.2014, time frame : 2013-11-09 to: 2014-03-09
-- Initiative "Stop Überbevölkerung" (Stop overpopulation), vote on 30.11.2014, 
-time frame: 2014-08-30 to: 2014-12-30
-- "Begrenzungsinitiative" (Restriction initiative), vote on 27.09.2020, 
-time frame: 2020-06-27 to: 2020-10-27
+-   Basler Zeitung (BAZ) - right wing after ownership changed in 2000?
 
-In total, the fina sample based on these filters contained 1731 articles.
+-   Blick -\
+
+-   Wochenzeitung (WOZ): left-wing
+
+-   Weltwoche (WEW): right wing
+
+-   SRF: public boradcaster, politically neutral
+
+-   Neue Zürcher Zeitung (NZZ): economically liberal/rather conservative
+
+-   Tagesanzeiger (TA) - centrist Only print versions of each newspaper
+    were used to avoid duplicates and ensure consistent article
+    structure over time, as some articles were retrieved from the early
+    2000's.
+
+*Time frames*: To focus on moments of increased politicization, four
+Swiss initiatives related to immigration were selected. For each
+initiative, a four week time period was defined, three weeks before and
+one week after the respective vote. The initiatives include the
+following:
+
+-   "Initiative für eine Regelung der Zuwanderung" (Initiative for
+    regulating immigration), vote on 24.09.2001, time frame: 2000-06-24
+    to: 2000-10-24
+
+-   "Initiative gege Masseneinwanderung" (Initiative against
+    massimmigration), vote on 09.02.2014, time frame : 2013-11-09 to:
+    2014-03-09
+
+-   Initiative "Stop Überbevölkerung" (Stop overpopulation), vote on
+    30.11.2014, time frame: 2014-08-30 to: 2014-12-30
+
+-   "Begrenzungsinitiative" (Restriction initiative), vote on
+    27.09.2020, time frame: 2020-06-27 to: 2020-10-27
+
+In total, the final sample based on these filters contained 1731
+articles.
 
 **Classification via GPT API**
 
-To analyze the articles, the OpenAI GPT-4.0 API was used to perform classification tasks. The classifications was based on a custom prompt that defined five separate tasks. Each article was sent into the model in full text, with a detailed instruction. The full version of the prompt can be found in the appendix. 
+To analyze the articles, the OpenAI GPT-4.0 API was used to perform
+classification tasks. The classifications was based on a custom prompt
+that defined five separate tasks. Each article was sent into the model
+in full text, with a detailed instruction. The full version of the
+prompt can be found in the appendix.
 
-**Task Overview**
-Each article was coded along five dimensions: 
+**Task Overview** Each article was coded along five dimensions:
 
-- Task 1- Relevance: 
-Binary classification: 
-1: Relevant — the article discusses immigration in the Swiss context. 
-0: Not relevant — immigration is not discussed meaningfully, or only in a 
-foreign/non-Swiss context.
+Task 1- Relevance: \
+Binary classification: \
+1: Relevant — the article discusses immigration in the Swiss context. \
+0: Not relevant — immigration is not discussed meaningfully, or only in
+a foreign/non-Swiss context.
 
-- Task 2 - Indirect Mention of Immigration 
-Binary classification: 
-1: Immigration is mentioned briefly or indirectly, but is not the main topic. 
-0: Either immigration is not mentioned at all, or immigration is the main
-topic.
+Task 2 - Indirect Mention of Immigration \
+Binary classification: \
+1: Immigration is mentioned briefly or indirectly, but is not the main
+topic. \
+0: Either immigration is not mentioned at all, or immigration is the
+main topic.
 
-- Task 3 - #Task 3 - Framing of Immigration 
-1: Economic 
-2: Cultural/Identity 
-3: Security 
-4: Humanitarian  
-5: Political/Legal  
-0: not applicable
-In the final evaluation, categories 3 (security), 4 (humanitarian) and 0(not applicable) were collapsed into a new label "9 = other", due to their low frequency. 
+Task 3 - Framing of Immigration \
+1: Economic \
+2: Cultural/Identity \
+3: Security \
+4: Humanitarian\
+5: Political/Legal\
+0: not applicable In the final evaluation, categories 3 (security), 4
+(humanitarian) and 0(not applicable) were collapsed into a new label "9
+= other", due to their low frequency.
 
-- Task 4 - Sentiment Towards Immigration
-1: Hopeful. 
-2: Sympathetic. 
-3: Neutral.
-4: Concerned / Uncertain. 
-5: Fearful. 
-6: Angry.
-7: Dismissive / Downplaying. 
-For the analysis, due to the low frequencies of some frames, categories were recoded as follows: 
-Sentiment 1 (hopeful) and sentiment 2 (sympathetic) were merged into
-a category "8 - positive". 
-Sentiments 5 (fearful), 7 (dismissive)
-and 0 (not applicable) were collapsed into a new category "9 - other".
+Task 4 - Sentiment Towards Immigration \
+1: Hopeful. \
+2: Sympathetic. \
+3: Neutral. \
+4: Concerned / Uncertain. \
+5: Fearful. \
+6: Angry. \
+7: Dismissive / Downplaying. \
+For the analysis, due to the low frequencies of some frames, categories
+were recoded as follows: \
+Sentiment 1 (hopeful) and sentiment 2 (sympathetic) were merged into a
+category "8 - positive". \
+Sentiments 5 (fearful), 7 (dismissive) and 0 (not applicable) were
+collapsed into a new category "9 - other".
 
-Task 5 - Constructed Opposition 
-1: An opposition is present.
+Task 5 - Constructed Opposition \
+1: An opposition is present. \
 0: No opposition is present.
 
-Each task included definitions, a more detailed explanation of the categories as well
-as example sentences and categorizations. Further, the GPT model was instructed to  act as an expert on Swiss politics, political communication and media discourse.
-Several test runs and prompt refinements based on the test runs were conducted before processing the full data set, to ensure the validity and consistency of the classification. For example, explanations were modified and examples
+Each task included definitions, a more detailed explanation of the
+categories as well as example sentences and categorizations. Further,
+the GPT model was instructed to act as an expert on Swiss politics,
+political communication and media discourse. Several test runs and
+prompt refinements based on the test runs were conducted before
+processing the full data set, to ensure the validity and consistency of
+the classification. For example, explanations were modified and examples
 of edge cases were added. After multiple test runs and quality checks,
-the full data set was processed. 
+the full data set was processed.
 
 Categorization based on...
 
-**Final Sample**:
-Out of the initial 1731 articles, 706 could not be classified by the API. Of the remaining 1025 articles, the relevance task (Task 1) identified 772 articles as relevant for the research question. These 772 articles comprise the final data set which was used for the analysis. 
+**Final Sample**: Out of the initial 1731 articles, 706 could not be
+classified by the API. Of the remaining 1025 articles, the relevance
+task (Task 1) identified 772 articles as relevant for the research
+question. These 772 articles comprise the final data set which was used
+for the analysis.
 
 ## Results
+
 ```{r}
 library(tidyverse)
 Joined_Data_filtered <- read_csv("Data/analysis_data_relevant_only.csv")
@@ -186,9 +234,15 @@ Joined_Data_filtered |>
   select(medium_name) |> 
   map(table)
 ```
-The final data set consists of 772 articles. This includes 169 articles of the Basler Zeitung (BAZ), 175 articles of the Tages-Anzeiger (TA), 172 articles of the Neue Zürcher Zeitung (NZZ), 124 articles of SRF, 68 articles of Blick, 53 articles of Die Weltwoche and 15 articles of the WOZ. 
+
+The final data set consists of 772 articles. This includes 169 articles
+of the Basler Zeitung (BAZ), 175 articles of the Tages-Anzeiger (TA),
+172 articles of the Neue Zürcher Zeitung (NZZ), 124 articles of SRF, 68
+articles of Blick, 53 articles of Die Weltwoche and 15 articles of the
+WOZ.
 
 **Analysis of frames**
+
 ```{r}
 Joined_Data_filtered <- Joined_Data_filtered |>
   mutate(code_3_numeric = as.numeric(as.character(code_3))) |>
@@ -206,12 +260,22 @@ summary(m_frames_medium)
 
 ```
 
-To examine the newspaper's use of different frames a multinominal logictic regression was conducted, with the reference category economic frame (frame 1). Key results are as follows:
-- Some outlets showed higher odds of using cultural frames over economic ones. For example, Die Wochenzeitung and Die Weltwoche had positive coefficients for this comparison (1.13 and 0.72 respectively), suggesting these outlets are more likely to frame immigration culturally than economically.
-- SRF and Neue Zürcher Zeitung (NZZ) had positive coefficients, indicating they are more likely to use a political/legal frame than an economic one, particularly SRF (coefficient = 1.07).
-- The model suggests a reasonable model fit (Residual Deviance = 1020.71, AIC = 1062.71), however standard errors for most coefficients are very large, which suggests that they may not be statistically significant. 
+To examine the newspaper's use of different frames a multinominal
+logictic regression was conducted, with the reference category economic
+frame (frame 1). Key results are as follows: - Some outlets showed
+higher odds of using cultural frames over economic ones. For example,
+Die Wochenzeitung and Die Weltwoche had positive coefficients for this
+comparison (1.13 and 0.72 respectively), suggesting these outlets are
+more likely to frame immigration culturally than economically. - SRF and
+Neue Zürcher Zeitung (NZZ) had positive coefficients, indicating they
+are more likely to use a political/legal frame than an economic one,
+particularly SRF (coefficient = 1.07). - The model suggests a reasonable
+model fit (Residual Deviance = 1020.71, AIC = 1062.71), however standard
+errors for most coefficients are very large, which suggests that they
+may not be statistically significant.
 
-The following visualization shows the predicted probabilities of frames by newspaper.
+The following visualization shows the predicted probabilities of frames
+by newspaper.
 
 ```{r}
 library(ggeffects)
@@ -224,6 +288,7 @@ Pred_Frame <- plot(pred_frame) +
 
 print(Pred_Frame)
 ```
+
 **Analysis of sentiment**
 
 ```{r}
@@ -259,13 +324,27 @@ Pred_Sentiment <- plot(pred_sentiment) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
-To assess how the newspapers differ in sentiment used when discussing immigration, a multinominal logistic regression was run, with sentiment type as outcome and media outlet as predictor. The neutral tone acts as reference category. Key results are as follows:
-- Most media outlets did not show strong deviations from neutrality. However, Die Wochenzeitung had a positive coefficient (1.30), suggesting that compared to neutral tone, it was more likely to use a concerned tone. 
-- Die Weltwoche and Die Wochenzeitung had relatively strong positive coefficients (1.42 and 2.20), suggesting these outlets may use more emotionally critical or accusatory language than others. SRF and NZZ, in contrast, had negative coefficients, indicating they were less likely to express anger relative to a neutral tone.
-- Strong negative coefficients for Blick (–13.58) and Weltwoche (–12.48) indicate that positive sentiment was very unlikely in these outlets. Die Wochenzeitung stands out with a positive coefficient (2.31), indicating they used a rather hopeful or sympathetic tone.
-- However, some sentiment categories were underrepresented in the data set, eading to extreme or unstable coefficiets for certain outlets. esults should be interpreted with caution. 
+To assess how the newspapers differ in sentiment used when discussing
+immigration, a multinominal logistic regression was run, with sentiment
+type as outcome and media outlet as predictor. The neutral tone acts as
+reference category. Key results are as follows: - Most media outlets did
+not show strong deviations from neutrality. However, Die Wochenzeitung
+had a positive coefficient (1.30), suggesting that compared to neutral
+tone, it was more likely to use a concerned tone. - Die Weltwoche and
+Die Wochenzeitung had relatively strong positive coefficients (1.42 and
+2.20), suggesting these outlets may use more emotionally critical or
+accusatory language than others. SRF and NZZ, in contrast, had negative
+coefficients, indicating they were less likely to express anger relative
+to a neutral tone. - Strong negative coefficients for Blick (–13.58) and
+Weltwoche (–12.48) indicate that positive sentiment was very unlikely in
+these outlets. Die Wochenzeitung stands out with a positive coefficient
+(2.31), indicating they used a rather hopeful or sympathetic tone. -
+However, some sentiment categories were underrepresented in the data
+set, eading to extreme or unstable coefficiets for certain outlets.
+esults should be interpreted with caution.
 
-The following visualization shows the predicted probabilities of sentiment by newspaper.
+The following visualization shows the predicted probabilities of
+sentiment by newspaper.
 
 ```{r}
 print(Pred_Sentiment)
@@ -298,13 +377,22 @@ Pred_Opposition <- plot(pred_opposition) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
-To examines the presence and variation of constructed oppositions, a binary logistic regression was run. Constructed opposition (code_5) acts as the dependent variable, the newspapers as the predictor. Some key results are as follows: 
-- Die Weltwoche shows a significantly higher likelihood of constructing oppositions compared to the baseline (B = 1.10, p < 0.001), suggesting a stronger tendency to emphasize divides between "the Swiss" and migrants.
-- Die Wochenzeitung also had a significantly higher probability (B = 1.27, p < 0.05), though this result should be interpreted cautiously due to a smaller sample size.
-- In contrast, Neue Zürcher Zeitung was less likely to have oppositional framing present (B = -0.54, p = 0.049).
-- The remaining outlets, including Blick, Tages-Anzeiger, and SRF, did not show statistically significant deviations from the baseline.
+To examines the presence and variation of constructed oppositions, a
+binary logistic regression was run. Constructed opposition (code_5) acts
+as the dependent variable, the newspapers as the predictor. Some key
+results are as follows: - Die Weltwoche shows a significantly higher
+likelihood of constructing oppositions compared to the baseline (B =
+1.10, p \< 0.001), suggesting a stronger tendency to emphasize divides
+between "the Swiss" and migrants. - Die Wochenzeitung also had a
+significantly higher probability (B = 1.27, p \< 0.05), though this
+result should be interpreted cautiously due to a smaller sample size. -
+In contrast, Neue Zürcher Zeitung was less likely to have oppositional
+framing present (B = -0.54, p = 0.049). - The remaining outlets,
+including Blick, Tages-Anzeiger, and SRF, did not show statistically
+significant deviations from the baseline.
 
-The following visualization shows the predicted probabilities of constructed opposition by newspaper.
+The following visualization shows the predicted probabilities of
+constructed opposition by newspaper.
 
 ```{r}
 print(Pred_Opposition)
@@ -312,25 +400,233 @@ print(Pred_Opposition)
 
 ## Conclusion
 
-This project examined how Swiss newspapers represent immigration in the context of politically salient moments, specifically during national initiatives and referendums. Based on the results of the analysis, the research questions are discussed and answered as follows. 
-Political ad economic frames dominate the newspapers when it comes to immigration. Right-leaning newspapers, like Die Weltwoche, are more frequently employ opositional or cultural farmings, while liberal or centrist outlets(NZZ, SRF), focus on more on political or legal aspects. 
-Emotional tone, overall, is mostly neutral or concerned, although there were traces of anger and dismissiveness found. The right-wing newspaper Die Weltwoche, for example, appears more likely to express an angry sentiment, while the left-wing newspaper Die Wochenzeitung uses positive sentiments. 
-The use of constructed oppositions, "us vs. them", is not uniform across the media landscape, Die Weltwoche and Die Wochenzeitung showed higher likelihoods of constructing such contrasts. 
-These findings suggest that even within a non-polarized media environment like Switzerland, ideological positioning influences how immigration is framed, especially during times of heightened public attention and direct democratic decision-making.
+This project examined how Swiss newspapers represent immigration in the
+context of politically salient moments, specifically during national
+initiatives and referendums. Based on the results of the analysis, the
+research questions are discussed and answered as follows. \
+Political ad economic frames dominate the newspapers when it comes to
+immigration. Right-leaning newspapers, like Die Weltwoche, are more
+frequently employ opositional or cultural farmings, while liberal or
+centrist outlets(NZZ, SRF), focus on more on political or legal aspects.
+\
+Emotional tone, overall, is mostly neutral or concerned, although there
+were traces of anger and dismissiveness found. The right-wing newspaper
+Die Weltwoche, for example, appears more likely to express an angry
+sentiment, while the left-wing newspaper Die Wochenzeitung uses positive
+sentiments. \
+The use of constructed oppositions, "us vs. them", is not uniform across
+the media landscape, Die Weltwoche and Die Wochenzeitung showed higher
+likelihoods of constructing such contrasts. \
+These findings suggest that even within a non-polarized media
+environment like Switzerland, ideological positioning influences how
+immigration is framed, especially during times of heightened public
+attention and direct democratic decision-making.
 
 **Limitations**
-Despite these insights, several limitations affect the generalizability and validity of the findings. First of all, the use of the LLM for for the article classification introduced some constraints. The classification of the articles resulted in a substantial proportion of articles that couldn't be classified. Thus, the sample was thus reduced by about 40%. The smaller sample was problematic, as it limited the ability to make balanced comparisons across outlets with varying article counts. 
-Additionally Some regression results produced very large standard errors, which complicates the interpretation of statistical significance. In certain cases, the classifications also defied expectations. For instance, in Task 5 on constructed oppositions, it was surprising to find left-leaning, pro-immigration outlets categorized as constructing “us vs. them” narratives. This raises questions about whether the task prompt may have been misunderstood or too vague. Despite multiple rounds of prompt testing and refinement, the validation of outputs was done manually and on a small sample, which may have left some misclassifications undetected.
-Moreover, some categories may have been too broad, potentially reducing nuance. In Task 3 (Framing), the political/legal frame was very dominant, while the "no frame" category (0) was rarely used. This could suggesting either overclassification or that the framing categories were not sufficiently distinct. A similar issue could be seen in Task 4 (Sentiment), where neutral or concerned tones were most frequently assigned, possibly indicating difficulty in differentiating between mild evaluative language and true neutrality.
-Finally, the study was deliberately designed to only focus on periods around major initiatives. This increases the salience, however excludes regular reporting. It could be beneficial, to compare the discourse during the initiatives with regular reporting periods. 
 
+Despite these insights, several limitations affect the generalizability
+and validity of the findings. First of all, the use of the LLM for for
+the article classification introduced some constraints. The
+classification of the articles resulted in a substantial proportion of
+articles that couldn't be classified. Thus, the sample was thus reduced
+by about 40%. The smaller sample was problematic, as it limited the
+ability to make balanced comparisons across outlets with varying article
+counts. \
+Additionally Some regression results produced very large standard
+errors, which complicates the interpretation of statistical
+significance. In certain cases, the classifications also defied
+expectations. For instance, in Task 5 on constructed oppositions, it was
+surprising to find left-leaning, pro-immigration outlets categorized as
+constructing “us vs. them” narratives. This raises questions about
+whether the task prompt may have been misunderstood or too vague.
+Despite multiple rounds of prompt testing and refinement, the validation
+of outputs was done manually and on a small sample, which may have left
+some misclassifications undetected. \
+Moreover, some categories may have been too broad, potentially reducing
+nuance. In Task 3 (Framing), the political/legal frame was very
+dominant, while the "no frame" category (0) was rarely used. This could
+suggesting either overclassification or that the framing categories were
+not sufficiently distinct. A similar issue could be seen in Task 4
+(Sentiment), where neutral or concerned tones were most frequently
+assigned, possibly indicating difficulty in differentiating between mild
+evaluative language and true neutrality. \
+Finally, the study was deliberately designed to only focus on periods
+around major initiatives. This increases the salience, however excludes
+regular reporting. It could be beneficial, to compare the discourse
+during the initiatives with regular reporting periods.
 
-# Bibliografie {.unnumbered}
+# References {.unnumbered}
 
 # Appendix {.unnumbered}
 
-- AGP prompt
-- 
+**Original prompt for the GPT API**
+
+You are an expert in Swiss politics, political communication, and media
+framing. You are highly familiar with how immigration debates are shaped
+in the press. You will be provided with Swiss newspaper articles related
+to immigration, published around the time of major initiatives
+(Volksabstimmungen). Your task is to carefully analyze each article and
+perform the following classification tasks, using the instructions
+provided for each task.
+
+**Task 1 - Relevance** Analyze whether this article is relevant for a
+discourse analysis of immigration in the Swiss context. The article is
+relevant if it discusses immigration as an issue in Switzerland. This
+includes for example: immigration to Switzerland, Swiss political
+debates about immigration or asylum, Swiss parties (e.g. SVP, SP) or
+initiatives related to migration. Articles about immigration in other
+countries are not relevant, unless the article explicitly connects them
+to Swiss politics or society.
+
+List of categories (return only the number in your final classification)
+1: Relevant — the article discusses immigration in the Swiss context.
+
+0: Not relevant — immigration is not discussed meaningfully, or only in
+a foreign/non-Swiss context.
+
+**Task 2 - Indirect Mention of Immigration** Detect whether immigration
+is mentioned briefly or indirectly, and is not the main focus of the
+article. For example, immigration may appear in only one sentence or
+sub-paragraph, as part of a larger discussion on another topic (e.g.,
+economy, housing).
+
+List of categories (return only the number in your final classification)
+1: Immigration is mentioned briefly or indirectly, but is not the main
+topic.
+
+0: Either immigration is not mentioned at all, or immigration is the
+main topic.
+
+**Task 3 - Framing of Immigration** Determine how immigration is framed
+in the article. Each frame emphasizes certain aspects of immigration.
+Only classify the frame the article itself uses. Do not assign a frame
+just because the article quotes, summarizes, or describes what someone
+else says — unless the article clearly endorses, reinforces, or builds
+on that framing. If the article presents an argument but then debunks,
+distances itself, or mockingly reports it, do not assign that frame.
+Only assign a frame if that’s how the article itself presents
+immigration. If multiple frames are present, chosoe the one that is most
+apparent, dominant or frequently emphasized in the article. If no
+framing of immigration is present, choose "0: Not applicable".
+
+List of categories (return only the number in your final classification)
+1: Economic frame. The article discusses immigration in terms of its
+impact on the economy. This includes effects on jobs, labor force or
+competition, welfare, or productivity. Migrants may be described as
+workers, taxpayers, economic burdens, or financial contributors.
+
+2: Cultural/Identity frame. The article frames immigration as a cultural
+issue. The article focuses on immigration's effect on Swiss identity,
+values, language, religion or traditions. Migrants may be portrayed as
+culturally different or challenging to Swiss identity.
+
+3: Security frame. The article frames immigration as a threat to public
+safety or order. This includes mention of crime, terrorism, instability,
+or uncontrolled borders. Migrants may be associated with risk and
+insecurity.
+
+4: Humanitarian frame. The article presents migrants as people in need
+of help or protection. This frame emphasized suffering, vulnerability,
+or moral responsibility.
+
+5: Political/Legal frame. The article focuses on on immigration as a
+legal or political issue. This includes laws, referendums, asylum
+procedures, or EU policy. Debates about sovereignty, institutions, or
+party positions also fall under this frame.
+
+0: Not applicable.
+
+Examples “Our economy depends on skilled foreign labor to fill critical
+gaps.” Response: 1
+
+“The SVP warns that immigration will destroy our national culture.”
+Response: 0 (if not endorsed by the article) or 2 (if article reinforces
+this message)
+
+“Critics say migrants burden the social system — but the data proves
+otherwise.” Response: 5
+
+**Task 4 - Sentiment Toward Immigration** Assess the emotional tone used
+when immigration or migrants are discussed in the article. Only evaluate
+the sentiment expressed toward immigration or migrants themselves.Do not
+classify emotional tone that is directed at political parties or actors,
+the media, campaigns or general opinions.If the article mentions fear,
+anger, or crisis, but is clearly critiquing, mocking, or distancing
+itself from those claims, do not assign that sentiment. If multiple
+sentiments are present, select the dominant or most consistent one. If
+you can not detect a sentiment, choose "0: Not applicable".
+
+List of categories (return only the number in your final classification)
+1: Hopeful. This includes immigration being seen as an opportunity,
+benefit, or positive force for society.
+
+2: Sympathetic. This includes compassion for migrants or refugees, or
+emphasizes suffering, vulnerability, or moral duty in the context of
+immigration.
+
+3: Neutral. The tone is strictly factual, descriptive, or statistical,
+without clear emotional framing.
+
+4: Concerned / Uncertain. This includes expression of unease, ambiguity,
+or worry, but not in a strongly emotional or accusatory way. It
+aknowledges problems, but without panic or blame.
+
+5: Fearful. This includes portraying immigration as dangerous,
+destabilizing, or threatening to public order, values, or safety.
+Immigration is described as an imminent, generalized threat, usually
+emotionally charged.
+
+6: Angry. This includes blame, outrage, or emotionally charged criticism
+— often targeting migrants, elites, or institutions, or immigrants
+themselves.
+
+7: Dismissive / Downplaying. This includes portraying immigration as
+exaggerated, unimportant, or overblown.
+
+0: Not applicable.
+
+Examples "Mass immigration could overwhelm our system." Response: 5
+
+“The SVP warns that mass immigration could destroy our values — a claim
+widely debunked by experts.” Response: 7
+
+“The rapid pace of immigration is putting real pressure on schools and
+hospitals, and policymakers must act.” Response: 4
+
+**Task 5 - Constructed Oppositions** Identify whether the article
+constructs an opposition between "the Swiss" and migrants/foreigners.
+Oppositions define who belongs and who does not by attributing
+contrasting characteristics to in-groups and out-groups. This includes
+both explicit and implicit contrasts. This includes ascribing positive
+traits to "the Swiss", ascribing different or negative traits to
+immigrants/foreigners or using comparative languages, stereotypes or
+generalizations. Only classify an opposition as present if the article
+constructs, reproduces or reinforces a contrast between "the Swiss" and
+migrants/foreigners. Do not code 1 if the article quotes or describes
+someone else’s oppositional framing but does not adopt it or critiques
+it.
+
+List of categories (return either "0" or "1" in your final
+classification) 1: An opposition is present.
+
+0: No opposition is present.
+
+Examples “Unlike Swiss workers, many migrants lack basic
+qualifications.” Response: 1
+
+“Switzerland must preserve its values from outside influence.” Response:
+1
+
+“The SVP claims that foreigners threaten Swiss jobs — but this fear is
+exaggerated and unsupported by evidence.” Response: 0
+
+“Many believe immigrants don't share Swiss values, yet recent studies
+show high integration success.” Response: 0
+
+At the end of your answer, return only the selected number for each
+task, in this exact format: 1 0 5 4 0
+
+Do not include labels, descriptions, or any other text.
 
 ## R Code
 
