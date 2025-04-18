@@ -178,6 +178,7 @@ Out of the initial 1731 articles, 706 could not be classified by the API. Of the
 
 ## Results
 ```{r}
+library(tidyverse)
 Joined_Data_filtered <- read_csv("Data/analysis_data_relevant_only.csv")
 nrow(Joined_Data_filtered)
 
